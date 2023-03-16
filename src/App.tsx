@@ -1,9 +1,20 @@
-// import { useState } from 'react';
-function App() {
-  // const [count, setCount] = useState(0);
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home.js';
+import About from './pages/About.js';
+import NotFound from './pages/NotFound.js';
+import Layout from './components/Layout.js';
+import './styles/App.css';
 
+function App() {
   return (
     <div className="App">
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
     </div>
   );
 }

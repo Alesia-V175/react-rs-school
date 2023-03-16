@@ -21,7 +21,7 @@
     },
     "ecmaVersion": "latest",
     "sourceType": "module",
-    "project": "./tsconfig.json"
+    "project": ["./tsconfig.json"]
   },
   "plugins": [
     "@typescript-eslint",
@@ -43,7 +43,14 @@
     "@typescript-eslint/no-explicit-any": 2,
     "@typescript-eslint/no-var-reqiures": "off",
     "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages", {
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
   },
   "settings": {
     "react": {
