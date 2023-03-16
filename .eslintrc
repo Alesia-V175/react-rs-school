@@ -4,7 +4,9 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "airbnb-base",
+    "airbnb-typescript/base"
   ],
   "env": {
     "browser": true,
