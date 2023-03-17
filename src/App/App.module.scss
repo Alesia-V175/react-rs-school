@@ -2,37 +2,38 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
 }
 
 :root {
-  --main-bg-color: #295943;
+  --main-bg-color: #373942;
+  --secondary-bg-color: #295943;
+  --active-color:#43B97F;
+  --font-primary-color: #F9F9F9;
+  --font-secondary-color: rgba(249, 249, 249, 0.67);
 }
 
 html {
   font-size: 10px;
 }
 
+@font-face {
+  font-family: 'Roboto';
+  src: url('../assets/fonts/Roboto-Light.woff2') format('woff2'),
+  url('../assets/fonts/Roboto-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
 #root {
-  display: flex;
-  justify-content: center;
-  background: palevioletred;
+  background: var(--main-bg-color);
+  color: var(--font-primary-color);
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 1.2rem;
 }
 
 .container {
-  width: 1200px;
-}
-
-.App {
-  width: 1200px;
-}
-
-.footer {
-  width: 100%;
-  background: var(--main-bg-color);
-  padding: 1rem;
-}
-
-.footer__list {
-  display: flex;
-  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
 }

@@ -1,0 +1,31 @@
+.footer {
+  width: 100%;
+  background: var(--secondary-bg-color);
+  color: var(--font-secondary-color);
+}
+
+.footer__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__logo_github {
+  display: block;
+  width: 7.5rem;
+}
+
+.footer__logo_rs {
+  display: block;
+  width: 11rem;
+}
+
+.footer__link {
+  opacity: 0.7;
+  transition: 0.4s;
+}
+
+.footer__link:hover {
+  cursor: pointer;
+  opacity: 1;
+}
