@@ -19,7 +19,6 @@ const Layout = () => (
         <li className="footer__item">© by Alesia Sokolovskaya 2023</li>
         <li className="footer__item">
           <a href="https://rs.school/js/" target="_blank" className="link" rel="noreferrer">
-            <img className="rs-logo" src="../../assets/images/rs_school_js.svg" alt="RS School" title="RS School" />
           </a>
         </li>
       </ul>
