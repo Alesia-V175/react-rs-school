@@ -1,8 +1,8 @@
 import React from 'react';
-import Api from '../../Api/Api';
 import { ICardItem } from '../../types/interfaces';
-import CardsList from '../../components/CardsList/CardsList';
+import CardsList from '../../components/CardsList/CardsList.js';
 import cardsDB from '../../Database/database.json';
+import styles from './Home.module.scss';
 
 class Home extends React.Component<object, { cards: ICardItem[] }> {
   state = {
@@ -14,20 +14,20 @@ class Home extends React.Component<object, { cards: ICardItem[] }> {
     this.setState({ cards: db });
   }
 
-  private static async getAllCards() {
-    const res = await Api.getListCards();
-    return res;
-  }
-
   render() {
     return (
       <>
-        <section>
-          <h1>Home is Home</h1>
-          <CardsList cards={this.state.cards} />
-        </section>
+        <div className={styles.main__banner}>
+          <img src="../../src/assets/images/banner-main.jpg" alt="Banner" className={styles.main__banner_img}/>
+        </div>
+        <div className={styles.main__content}>
+          <h1 className={styles.main__title}>Explore the world with a photo!</h1>
+          <section className={styles.main__cards}>
+            <CardsList cards={this.state.cards} />
+          </section>
+        </div>
       </>
-    )
+    );
   }
 }
 

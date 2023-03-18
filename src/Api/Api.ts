@@ -6,7 +6,7 @@ class Api {
   private static SECRET_KEY = '-2sQ4rXxQkeRa5qLeIIBf-a-VkycE3wSGd7JQz6Dcjc';
 
   public static async getListCards() {
-    let url = this.API_URL + '/photos';
+    let url = this.API_URL + '/photos?per_page=51';
 
     const response = await fetch(url, {
       method: 'GET',

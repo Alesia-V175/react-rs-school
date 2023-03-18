@@ -4,13 +4,13 @@ import CardItem from '../CardItem/CardItem.js';
 
 const CardsList = ({ cards }: ICardsList) => {
   return cards?.length ? (
-    <div >
+    <>
       {cards?.map((card) => (
         <CardItem key={card.id} {...card} />
       ))}
-    </div>
+    </>
   ) : (
-    <h3>Nothing found</h3>
+    <h3>Sorry, but nothing matched your search terms. Please, try again with another keywords.</h3>
   );
 };
 
