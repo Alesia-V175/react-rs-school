@@ -4,6 +4,8 @@ import likeIcon from '../../assets/icons/heart.svg';
 import styles from './CardItem.module.scss';
 
 const CardItem = (card: ICardItem) => {
+  const date = new Date(card.created_at).toISOString().split('T')[0];
+
   return (
     <>
       <div className={styles.card__wrap}>
@@ -12,7 +14,7 @@ const CardItem = (card: ICardItem) => {
         </div>
         <div className={styles.card__description}>
           <p>Created at:
-            <span className={styles.card__description_detailed}> {card.created_at}</span>
+            <span className={styles.card__description_detailed}> {date}</span>
           </p>
           <p>Description:
             <span className={styles.card__description_detailed}> {card.alt_description}</span>
