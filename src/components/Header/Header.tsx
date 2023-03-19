@@ -11,9 +11,9 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.header__wrap}>
         <NavLink to="/" className={styles.header__logo}>
-          <img src="../../src/assets/icons/logo.svg"
-               alt="Tiny Movies"
-               title="Tiny Movies"
+          <img src="src/assets/icons/logo.svg"
+               alt="Photo's Time"
+               title="Photo's Time"
                className={styles.header__logo_img}/>
         </NavLink>
         <nav>

@@ -9,7 +9,7 @@ const Footer = () => (
            target="_blank"
            className={styles.footer__link}
            rel="noreferrer">
-          <img src='../../src/assets/icons/github.svg'
+          <img src='src/assets/icons/github.svg'
                alt="Github" title="Alesia's Github"
                className={styles.footer__logo_github} />
         </a>
@@ -20,7 +20,7 @@ const Footer = () => (
            target="_blank"
            className={styles.footer__link}
            rel="noreferrer">
-          <img src="../../src/assets/icons/rs-school.svg"
+          <img src="src/assets/icons/rs-school.svg"
                alt="RS School" title="RS School"
                className={styles.footer__logo_rs} />
         </a>

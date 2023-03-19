@@ -19,7 +19,7 @@ const CardItem = (card: ICardItem) => {
         </div>
         <div className={styles.card__footer}>
           <div className={styles.likes__wrap}>
-            <img src='../../src/assets/icons/heart.svg' alt="like" className={styles.likes__wrap_img}/>
+            <img src='src/assets/icons/heart.svg' alt="like" className={styles.likes__wrap_img}/>
             <span>{card.likes}</span>
           </div>
           <div className={styles.color__wrap}>

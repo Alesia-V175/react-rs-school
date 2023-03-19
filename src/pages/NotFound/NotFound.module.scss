@@ -30,9 +30,9 @@
     &:hover {
       transform: scale(1.1);
       border: 1px solid $active-color;
-      -webkit-box-shadow: 0px 0px 42px -17px rgba(67,185,127,1);
-      -moz-box-shadow: 0px 0px 42px -17px rgba(67,185,127,1);
-      box-shadow: 0px 0px 42px -17px rgba(67,185,127,1);
+      -webkit-box-shadow: 0 0 42px -17px rgba(67,185,127,1);
+      -moz-box-shadow: 0 0 42px -17px rgba(67,185,127,1);
+      box-shadow: 0 0 42px -17px rgba(67,185,127,1);
       cursor: pointer;
     }
   }
