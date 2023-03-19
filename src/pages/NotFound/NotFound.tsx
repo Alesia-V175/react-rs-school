@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom';
+import styles from './NotFound.module.scss';
 
 const NotFound = () => (
-  <div>
-    <h2>Ooops, something went wrong. This page does not exist</h2>
-    <span>Go </span>
-    <Link to="/">home</Link>
-  </div>
+  <>
+    <div className={styles.container}>
+      <img src="../../src/assets/images/not-found1.jpg" alt="Page not found" className={styles.container__image} />
+      <div className={styles.container__button}>
+       <Link to="/" className={styles.container__link}>Go home</Link>
+      </div>
+    </div>
+  </>
 );
 
 export default NotFound;
