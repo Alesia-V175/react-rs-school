@@ -7,7 +7,7 @@ export interface ICardItem {
   height: number,
   color: string,
   blur_hash: string,
-  description: null,
+  description: string | null,
   alt_description: string,
   urls: { [key: string]:string },
   links: { [key: string]:string },
