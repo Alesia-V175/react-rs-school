@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import logo from '../../assets/icons/logo.svg';
 import styles from './Header.module.scss';
 
 const setActiveLink = ({ isActive }: { isActive: boolean }): string => {
@@ -11,7 +12,7 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.header__wrap}>
         <NavLink to="/" className={styles.header__logo}>
-          <img src="src/assets/icons/logo.svg"
+          <img src={logo}
                alt="Photo's Time"
                title="Photo's Time"
                className={styles.header__logo_img}/>

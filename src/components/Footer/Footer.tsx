@@ -1,4 +1,6 @@
 import React from 'react';
+import githubLogo from '../../assets/icons/github.svg';
+import rsLogo from '../../assets/icons/rs-school.svg';
 import styles from './Footer.module.scss';
 
 const Footer = () => (
@@ -9,7 +11,7 @@ const Footer = () => (
            target="_blank"
            className={styles.footer__link}
            rel="noreferrer">
-          <img src='src/assets/icons/github.svg'
+          <img src={githubLogo}
                alt="Github" title="Alesia's Github"
                className={styles.footer__logo_github} />
         </a>
@@ -20,7 +22,7 @@ const Footer = () => (
            target="_blank"
            className={styles.footer__link}
            rel="noreferrer">
-          <img src="src/assets/icons/rs-school.svg"
+          <img src={rsLogo}
                alt="RS School" title="RS School"
                className={styles.footer__logo_rs} />
         </a>
