@@ -1,0 +1,38 @@
+@import '../../styles/variables';
+@import '../../styles/font';
+
+.footer {
+  background: $secondary-bg-color;
+  color: $font-secondary-color;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 100;
+  font-size: 1.2rem;
+}
+
+.footer__list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.footer__logo_github {
+  display: block;
+  width: 7.5rem;
+}
+
+.footer__logo_rs {
+  display: block;
+  width: 11rem;
+}
+
+.footer__link {
+  opacity: 0.7;
+  transition: 0.4s;
+}
+
+.footer__link:hover {
+  cursor: pointer;
+  opacity: 1;
+}
