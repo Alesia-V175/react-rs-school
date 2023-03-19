@@ -2,8 +2,9 @@ import React from 'react';
 import { ICardItem } from '../../types/interfaces';
 import CardsList from '../../components/CardsList/CardsList.js';
 import cardsDB from '../../Database/database.json';
-import styles from './Home.module.scss';
 import Search from '../../components/Search/Search.js';
+import banner from '../../assets/images/banner-main.jpg';
+import styles from './Home.module.scss';
 
 class Home extends React.Component<object, { cards: ICardItem[] }> {
   state = {
@@ -19,7 +20,7 @@ class Home extends React.Component<object, { cards: ICardItem[] }> {
     return (
       <>
         <div className={styles.main__banner}>
-          <img src="src/assets/images/banner-main.jpg" alt="banner" className={styles.main__banner_img}/>
+          <img src={banner} alt="banner" className={styles.main__banner_img}/>
         </div>
         <div className={styles.main__content}>
           <h1 className={styles.main__title}>Explore the world with a photo!</h1>
