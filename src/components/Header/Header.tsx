@@ -2,15 +2,20 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/icons/logo.svg';
 import styles from './Header.module.scss';
-import { HEADER_TITLE } from '../../constants/constants';
+import { Paths } from '../../constants/constants';
 
 const setActiveLink = ({ isActive }: { isActive: boolean }): string => {
   return isActive ? styles.nav__item_active : styles.nav__item;
 };
 
+const getRouteTitle = () => {
+  const currUrl = window.location.pathname;
+  return Object.values(Paths).find((page) => page.path === currUrl)?.title || '';
+};
+
 class Header extends React.Component<{ headerTitle?: string }> {
   state = {
-    headerTitle: HEADER_TITLE.HOME,
+    headerTitle: getRouteTitle(),
   };
 
   updateHeaderTitle = (headerTitle: string) => {
@@ -32,12 +37,12 @@ class Header extends React.Component<{ headerTitle?: string }> {
             <NavLink to="/"
                      className={setActiveLink}
                      data-testid="home-link"
-                     onClick={() => this.updateHeaderTitle(HEADER_TITLE.HOME)}>Home
+                     onClick={() => this.updateHeaderTitle(Paths.home.title)}>Home
             </NavLink>
             <NavLink to="/about"
                      className={setActiveLink}
                      data-testid="about-link"
-                     onClick={() => this.updateHeaderTitle(HEADER_TITLE.ABOUT)}>About us
+                     onClick={() => this.updateHeaderTitle(Paths.about.title)}>About us
             </NavLink>
           </nav>
         </div>
