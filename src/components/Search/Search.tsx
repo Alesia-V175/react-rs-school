@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Search.module.scss';
+import { KEY_LOCAL_STORAGE } from '../../constants/constants';
 
 class Search extends React.Component {
   state = {
@@ -12,7 +13,7 @@ class Search extends React.Component {
   }
 
   private static getSearchValue(): string {
-    const searchValue = localStorage.getItem('search');
+    const searchValue = localStorage.getItem(KEY_LOCAL_STORAGE.search);
 
     if (searchValue) {
       return JSON.parse(searchValue);
@@ -26,13 +27,19 @@ class Search extends React.Component {
       search: event.target.value,
     });
 
-    localStorage.setItem('search', JSON.stringify(event.target.value));
+    localStorage.setItem(KEY_LOCAL_STORAGE.search, JSON.stringify(event.target.value));
   }
 
   componentDidMount() {
     this.setState({
       search: Search.getSearchValue(),
     });
+  }
+
+  componentWillUnmount() {
+    if (this.state.search) {
+      localStorage.setItem(KEY_LOCAL_STORAGE.search, JSON.stringify(this.state.search));
+    }
   }
 
   render() {
@@ -43,7 +50,7 @@ class Search extends React.Component {
                  placeholder="Search a photo"
                  className={styles.search__input}
                  value={this.state.search}
-                 onChange={(e) => this.updateSearchValue(e)}
+                 onChange={this.updateSearchValue}
           />
         </div>
       </>
