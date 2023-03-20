@@ -17,9 +17,9 @@ const Header = () => {
                title="Photo's Time"
                className={styles.header__logo_img}/>
         </NavLink>
-        <nav>
-          <NavLink to="/" className={setActiveLink}>Home</NavLink>
-          <NavLink to="/about" className={setActiveLink}>About us</NavLink>
+        <nav data-testid="navbar">
+          <NavLink to="/" className={setActiveLink} data-testid="home-link">Home</NavLink>
+          <NavLink to="/about" className={setActiveLink} data-testid="about-link">About us</NavLink>
         </nav>
       </div>
     </header>
