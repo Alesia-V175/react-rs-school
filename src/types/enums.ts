@@ -1,5 +1,5 @@
-export const REQUEST_METHOD = {
-  GET: 'GET',
-};
+export enum RequestMethod {
+  GET = 'GET',
+}
 
-export default REQUEST_METHOD;
+export default RequestMethod;

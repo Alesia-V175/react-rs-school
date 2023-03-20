@@ -3,4 +3,6 @@ export const HEADER_TITLE = {
   ABOUT: 'About us page',
 };
 
-export default HEADER_TITLE;
+export const KEY_LOCAL_STORAGE = {
+  search: 'search',
+};

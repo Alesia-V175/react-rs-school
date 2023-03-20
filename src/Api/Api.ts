@@ -1,5 +1,5 @@
 import { API } from '../constants/apiConstants';
-import { REQUEST_METHOD } from '../types/enums';
+import { RequestMethod } from '../types/enums';
 
 class Api {
   private static API_URL = API.API_URL;
@@ -10,7 +10,7 @@ class Api {
     const url = `${this.API_URL}/photos?per_page=51`;
 
     const response = await fetch(url, {
-      method: REQUEST_METHOD.GET,
+      method: RequestMethod.GET,
       headers: {
         Authorization: `Client-ID ${this.ACCESS_KEY}`,
       },
