@@ -35,6 +35,12 @@ class Search extends React.Component {
     });
   }
 
+  componentWillUnmount() {
+    if (this.state) {
+      localStorage.setItem('search', this.state.search);
+    }
+  }
+
   render() {
     return (
       <>
@@ -43,7 +49,7 @@ class Search extends React.Component {
                  placeholder="Search a photo"
                  className={styles.search__input}
                  value={this.state.search}
-                 onChange={(e) => this.updateSearchValue(e)}
+                 onChange={this.updateSearchValue}
           />
         </div>
       </>
