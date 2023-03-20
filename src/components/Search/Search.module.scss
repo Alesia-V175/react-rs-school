@@ -1,0 +1,34 @@
+@import '../../styles/variables';
+@import '../../styles/font';
+
+.search {
+  display: flex;
+  padding: 1rem;
+  margin-bottom: 2rem;
+
+  &__input {
+    width: 60rem;
+    font-size: 16px;
+    line-height: 1.5;
+    background: $font-secondary-color;
+    border: 1px solid $secondary-bg-color;
+    background: url("../../../src/assets/icons/search.svg") no-repeat;
+    background-position: 15px 10px;
+    background-size: 20px 20px;
+    border-radius: 10rem;
+    padding: .5em 1em .5em 2.5em;
+
+    &::placeholder {
+      color: #838D99;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: #FFF;
+      border: 1px solid $active-color;
+      -webkit-box-shadow: 0 0 42px -17px rgba(67,185,127,1);
+      -moz-box-shadow: 0 0 42px -17px rgba(67,185,127,1);
+      box-shadow: 0 0 42px -17px rgba(67,185,127,1);
+    }
+  }
+}
