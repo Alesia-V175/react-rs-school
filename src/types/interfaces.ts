@@ -1,4 +1,4 @@
-import React from 'react';
+import { FormCard } from './types';
 
 export interface ICardItem {
   id: string,
@@ -82,18 +82,21 @@ export interface ICardsList {
   cards?: ICardItem[];
 }
 
-export interface IFormField {
-  firstName: string,
-  secondName: string,
+export interface IFormCards {
+  items: FormCard[],
 }
 
 export interface IFormFields {
-  firstNameRef: React.RefObject<HTMLInputElement> | null;
-  secondNameRef: React.RefObject<HTMLInputElement> | null;
-  emailRef: React.RefObject<HTMLInputElement> | null;
-  dateRef: React.RefObject<HTMLInputElement> | null;
-  selectRef: React.RefObject<HTMLSelectElement> | null;
-  checkboxRef: React.RefObject<HTMLSelectElement> | null;
-  switcherRef: React.RefObject<HTMLInputElement> | null;
-  fileUploadRef: React.RefObject<HTMLInputElement> | null;
+  onSelect: (item: FormCard) => void;
+}
+
+export interface IFormCardItem {
+  name: string,
+  email: string,
+  date: string,
+  payment: string,
+  type: string,
+  confirm: string,
+  avatar: string,
+
 }

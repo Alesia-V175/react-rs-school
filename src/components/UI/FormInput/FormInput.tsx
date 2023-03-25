@@ -1,17 +1,29 @@
-import React, { FC, RefObject } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 
-interface IFormInput {
-  type: string,
+interface Props {
+  children?: ReactNode,
+  type: 'text' | 'email' | 'date' | 'radio' | 'checkbox',
   name: string,
+  title?: string,
   placeholder?: string,
-  icon?: string | null,
-  ref?: RefObject<HTMLInputElement> | null;
+  value?: string,
+  // required: boolean,
+  error: string,
+  pattern?: string
+  // src?: string,
+  // onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const FormInput: FC<IFormInput> = (props) => {
+export type Ref = HTMLInputElement;
+
+const FormInput = forwardRef<Ref, Props>((props, ref) => {
   return (
-    <input {...props}/>
+    <div>
+      <label htmlFor={props.name}>{props.title}</label>
+      <input ref={ref} {...props}/>
+      <p>{props.error}</p>
+    </div>
   );
-};
+});
 
 export default FormInput;
