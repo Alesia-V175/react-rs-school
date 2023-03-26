@@ -99,6 +99,7 @@ export interface IFormState {
   avatarError: string,
   checkboxError: string,
   avatar: string,
+  isShowPopup: boolean,
 }
 
 export interface IFormCardItem {
@@ -109,5 +110,4 @@ export interface IFormCardItem {
   type: string,
   confirm: string,
   avatar: string,
-
 }

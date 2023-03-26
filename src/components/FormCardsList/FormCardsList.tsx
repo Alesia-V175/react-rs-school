@@ -6,7 +6,7 @@ const FormCardsList = ({ items }: IFormCards) => {
     return (
       <ul>
         {items.map((card) => (
-          <FormCardItem key={card.name + (Math.random() * 10)} {...card}/>
+          <FormCardItem key={card.name + (Math.random() * 10)} {...card} />
         ))}
       </ul>
     );

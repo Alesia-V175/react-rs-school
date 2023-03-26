@@ -8,7 +8,6 @@ interface Props {
   value?: string,
   values: string[],
   options?: string[],
-  // required: boolean
 }
 
 const FormSelect = forwardRef<RefSelect, Props>((props, ref) => {

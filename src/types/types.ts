@@ -11,15 +11,5 @@ export type FormCard = {
 export type Ref = HTMLInputElement;
 
 export type RefSelect = HTMLSelectElement;
-//
-// export type FormFields = {
-//   firstNameRef: React.RefObject<HTMLInputElement>;
-//   secondNameRef: React.RefObject<HTMLInputElement>;
-//   emailRef: React.RefObject<HTMLInputElement>;
-//   dateRef: React.RefObject<HTMLInputElement>;
-//   selectRef: React.RefObject<HTMLSelectElement>;
-//   checkboxRef: React.RefObject<HTMLSelectElement>;
-//   switcherRef: React.RefObject<HTMLInputElement>;
-//   fileUploadRef: React.RefObject<HTMLInputElement>;
-//   onSelect: (item: FormCard) => void;
-// }
+
+export type InputType = 'text' | 'radio' | 'email' | 'checkbox' | 'date' | 'file';

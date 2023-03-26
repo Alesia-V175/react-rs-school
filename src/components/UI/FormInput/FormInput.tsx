@@ -1,17 +1,15 @@
 import React, { forwardRef, ReactNode } from 'react';
+import { InputType } from '../../../types/types';
 
 interface Props {
   children?: ReactNode,
-  type: 'text' | 'email' | 'date' | 'radio' | 'checkbox',
+  type: InputType,
   name: string,
   title?: string,
   placeholder?: string,
   value?: string,
-  // required: boolean,
   error: string,
   pattern?: string
-  // src?: string,
-  // onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export type Ref = HTMLInputElement;

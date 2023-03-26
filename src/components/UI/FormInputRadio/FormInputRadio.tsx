@@ -1,14 +1,13 @@
 import React, { forwardRef, ReactNode } from 'react';
-import { Ref } from '../../../types/types';
+import { InputType, Ref } from '../../../types/types';
 
 interface Props {
   children?: ReactNode,
-  type: 'radio',
+  type: InputType,
   name: string,
   title: string,
   value: string,
-  error?: string
-  // required: boolean,
+  error?: string,
 }
 
 const FormInput = forwardRef<Ref, Props>((props, ref) => {

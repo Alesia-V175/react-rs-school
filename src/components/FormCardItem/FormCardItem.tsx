@@ -5,7 +5,7 @@ const FormCardItem = ({
 }: IFormCardItem) => {
   return (
     <li>
-      <img src={avatar}/>
+      <img src={avatar} alt=""/>
       <div>{name}</div>
       <div>{email}</div>
       <div>{date}</div>

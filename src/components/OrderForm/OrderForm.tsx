@@ -6,9 +6,13 @@ import { IFormFields, IFormState } from '../../types/interfaces';
 import FormInputFile from '../UI/FormInputFile/FormInputFile.js';
 import FormInputRadio from '../UI/FormInputRadio/FormInputRadio.js';
 import FormSelect from '../UI/FormSelect/FormSelect.js';
+import FormPopup from '../FormPopup/FormPopup.js';
+import { validationErrorMessage } from '../../constants/componentsConstants';
 // import styles from './OrderForm.module.scss';
 
 class OrderForm extends React.Component<IFormFields, IFormState> {
+  formRef: React.RefObject<HTMLFormElement>;
+
   firstNameRef: React.RefObject<HTMLInputElement>;
 
   secondNameRef: React.RefObject<HTMLInputElement>;
@@ -40,8 +44,10 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
       avatarError: '',
       checkboxError: '',
       avatar: '',
+      isShowPopup: false,
     };
     this.onSelect = props.onSelect;
+    this.formRef = React.createRef();
     this.firstNameRef = React.createRef();
     this.secondNameRef = React.createRef();
     this.emailRef = React.createRef();
@@ -55,7 +61,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
     this.saveFile = this.saveFile.bind(this);
   }
 
-  saveFile(file: string): void {
+  private saveFile(file: string): void {
     this.setState({
       file,
     });
@@ -90,19 +96,27 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
       payment: paymentValue as string,
       type: this.selectRef.current?.value as string,
       confirm: confirmValue,
-      // avatar: this.fileUploadRef.current?.value as string,
       avatar: this.state.file,
     };
 
+    this.setState({ isShowPopup: true });
+
+    setTimeout(() => {
+      this.setState({ isShowPopup: false });
+    }, 4000);
+
     this.onSelect(newCard);
+    this.formRef.current?.reset();
   };
 
   private validate(): number {
     let errorCount = 0;
+
     if (this.firstNameRef.current && this.firstNameRef.current.value.length < 3) {
       errorCount += 1;
+
       this.setState({
-        firstNameError: 'Your name must be at least 3 characters long',
+        firstNameError: validationErrorMessage.nameError,
       });
     } else {
       this.setState({
@@ -112,8 +126,9 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
 
     if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(this.emailRef.current?.value as string)) {
       errorCount += 1;
+
       this.setState({
-        emailError: 'Incorrect email',
+        emailError: validationErrorMessage.emailError,
       });
     } else {
       this.setState({
@@ -125,10 +140,12 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
       const todayDate = new Date();
       const userDate = new Date(this.dateRef.current.value);
 
-      if (!this.dateRef.current?.value || userDate.getTime() < todayDate.getTime()) {
+      if (!this.dateRef.current?.value
+        || userDate.getTime() < todayDate.getTime()
+      ) {
         errorCount += 1;
         this.setState({
-          dateError: 'Your date can not be earlier than today',
+          dateError: validationErrorMessage.dateError,
         });
       } else {
         this.setState({
@@ -139,8 +156,9 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
 
     if (!this.switcherRef1.current?.checked && !this.switcherRef2.current?.checked) {
       errorCount += 1;
+
       this.setState({
-        paymentError: 'Choose a type of payment',
+        paymentError: validationErrorMessage.paymentError,
       });
     } else {
       this.setState({
@@ -150,8 +168,9 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
 
     if (!this.fileUploadRef.current?.value) {
       errorCount += 1;
+
       this.setState({
-        avatarError: 'Please upload your avatar',
+        avatarError: validationErrorMessage.avatarError,
       });
     } else {
       this.setState({
@@ -161,8 +180,9 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
 
     if (!this.checkboxRef.current?.checked) {
       errorCount += 1;
+
       this.setState({
-        checkboxError: 'Confirm all your data',
+        checkboxError: validationErrorMessage.checkboxError,
       });
     } else {
       this.setState({
@@ -179,17 +199,14 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} ref={this.formRef}>
         <FormInput
           title="Enter your name"
           type="text"
           name="firstName"
           placeholder="Ivan"
           ref={this.firstNameRef}
-          // required={false}
           error={this.state.firstNameError}
-          // value={firstName}
-          // onChange={(event: ChangeEvent<HTMLInputElement>) => setFirstName}
         />
         <FormInput
           title="Enter your E-mail"
@@ -198,9 +215,6 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
           placeholder="IvanIvanov@mail.com"
           error={this.state.emailError}
           ref={this.emailRef}
-          // required={true}
-          // value={firstName}
-          // onChange={(event: ChangeEvent<HTMLInputElement>) => setFirstName}
         />
         <FormInput
           title="Choose date of Photo Shoot"
@@ -208,9 +222,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
           name="date"
           error={this.state.dateError}
           ref={this.dateRef}
-          // required={true}
         />
-
         <FormInputRadio
           title="Select the payment method"
           type="radio"
@@ -218,25 +230,20 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
           value="cash"
           ref={this.switcherRef1}
           error={this.state.paymentError}
-          // required={true}
         />
-
         <FormInputRadio
           title=""
           type="radio"
           name="radio"
           value="card"
           ref={this.switcherRef2}
-          // required={true}
         />
-
         <FormSelect
           title="Choose type of Photo Shoot"
           values={['Wedding', 'Love Story', 'Fashion', 'Animals', 'Advertising', 'Corporate', 'Automobile']}
           name="type"
           ref={this.selectRef}
         />
-
         <FormInputFile
           title="Choose your avatar"
           type="file"
@@ -244,20 +251,19 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
           save={this.saveFile}
           ref={this.fileUploadRef}
           error={this.state.avatarError}
-          // required={true}
         />
-
         <FormInput
           title="I confirm all entered data"
           type="checkbox"
           name="checkbox"
           ref={this.checkboxRef}
           error={this.state.checkboxError}
-          // required={true}
         />
-
         <FormButton type="submit">Confirm</FormButton>
         <FormButton type="reset">Reset</FormButton>
+        <FormPopup
+          visible={this.state.isShowPopup}
+        />
       </form>
     );
   }
