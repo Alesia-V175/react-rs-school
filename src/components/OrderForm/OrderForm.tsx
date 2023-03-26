@@ -2,13 +2,13 @@ import React from 'react';
 import FormButton from '../UI/FormButton/FormButton.js';
 import FormInput from '../UI/FormInput/FormInput.js';
 import { FormCard } from '../../types/types';
-import { IFormFields } from '../../types/interfaces';
+import { IFormFields, IFormState } from '../../types/interfaces';
 import FormInputFile from '../UI/FormInputFile/FormInputFile.js';
 import FormInputRadio from '../UI/FormInputRadio/FormInputRadio.js';
 import FormSelect from '../UI/FormSelect/FormSelect.js';
 // import styles from './OrderForm.module.scss';
 
-class OrderForm extends React.Component<IFormFields> {
+class OrderForm extends React.Component<IFormFields, IFormState> {
   firstNameRef: React.RefObject<HTMLInputElement>;
 
   secondNameRef: React.RefObject<HTMLInputElement>;
@@ -121,18 +121,20 @@ class OrderForm extends React.Component<IFormFields> {
       });
     }
 
-    const todayDate = new Date();
-    const userDate = new Date(this.dateRef.current.value);
+    if (this.dateRef.current) {
+      const todayDate = new Date();
+      const userDate = new Date(this.dateRef.current.value);
 
-    if (!this.dateRef.current?.value || userDate.getTime() < todayDate.getTime()) {
-      errorCount += 1;
-      this.setState({
-        dateError: 'Your date can not be earlier than today',
-      });
-    } else {
-      this.setState({
-        dateError: '',
-      });
+      if (!this.dateRef.current?.value || userDate.getTime() < todayDate.getTime()) {
+        errorCount += 1;
+        this.setState({
+          dateError: 'Your date can not be earlier than today',
+        });
+      } else {
+        this.setState({
+          dateError: '',
+        });
+      }
     }
 
     if (!this.switcherRef1.current?.checked && !this.switcherRef2.current?.checked) {
@@ -143,6 +145,17 @@ class OrderForm extends React.Component<IFormFields> {
     } else {
       this.setState({
         paymentError: '',
+      });
+    }
+
+    if (!this.fileUploadRef.current?.value) {
+      errorCount += 1;
+      this.setState({
+        avatarError: 'Please upload your avatar',
+      });
+    } else {
+      this.setState({
+        avatarError: '',
       });
     }
 
@@ -230,6 +243,7 @@ class OrderForm extends React.Component<IFormFields> {
           name="file"
           save={this.saveFile}
           ref={this.fileUploadRef}
+          error={this.state.avatarError}
           // required={true}
         />
 

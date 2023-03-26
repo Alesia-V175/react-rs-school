@@ -7,6 +7,7 @@ interface Props {
   name: string,
   title?: string,
   placeholder?: string,
+  error: string,
   // required: boolean,
   save: (file: string) => void,
   // src: string,
@@ -26,7 +27,7 @@ const FormInput = forwardRef<Ref, Props>((props, ref) => {
       }
              {...props}
       />
-      <p></p>
+      <p>{props.error}</p>
     </div>
   );
 });

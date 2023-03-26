@@ -90,6 +90,17 @@ export interface IFormFields {
   onSelect: (item: FormCard) => void;
 }
 
+export interface IFormState {
+  file: string,
+  firstNameError: string,
+  emailError: string,
+  dateError: string,
+  paymentError: string,
+  avatarError: string,
+  checkboxError: string,
+  avatar: string,
+}
+
 export interface IFormCardItem {
   name: string,
   email: string,
