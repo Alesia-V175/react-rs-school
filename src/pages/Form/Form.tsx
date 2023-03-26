@@ -27,7 +27,7 @@ class Form extends React.Component {
   render() {
     return (
       <>
-        <OrderForm onSelect={this.onSelect} />
+        <OrderForm onSelect={this.onSelect} data-testid="form"/>
         <FormCardsList items={this.state.items}/>
       </>
     );

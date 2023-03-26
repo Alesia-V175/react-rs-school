@@ -199,7 +199,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} ref={this.formRef}>
+      <form onSubmit={this.handleSubmit} ref={this.formRef} data-testid="form">
         <FormInput
           title="Enter your name"
           type="text"
