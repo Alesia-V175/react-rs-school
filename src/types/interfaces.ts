@@ -1,3 +1,5 @@
+import { FormCard } from './types';
+
 export interface ICardItem {
   id: string,
   created_at: string,
@@ -78,4 +80,34 @@ export interface SPONSOR {
 
 export interface ICardsList {
   cards?: ICardItem[];
+}
+
+export interface IFormCards {
+  items: FormCard[],
+}
+
+export interface IFormFields {
+  onSelect: (item: FormCard) => void;
+}
+
+export interface IFormState {
+  file: string,
+  firstNameError: string,
+  emailError: string,
+  dateError: string,
+  paymentError: string,
+  avatarError: string,
+  checkboxError: string,
+  avatar: string,
+  isShowPopup: boolean,
+}
+
+export interface IFormCardItem {
+  name: string,
+  email: string,
+  date: string,
+  payment: string,
+  type: string,
+  confirm: string,
+  avatar: string,
 }

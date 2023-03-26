@@ -44,6 +44,11 @@ class Header extends React.Component<{ headerTitle?: string }> {
                      data-testid="about-link"
                      onClick={() => this.updateHeaderTitle(Paths.about.title)}>About us
             </NavLink>
+            <NavLink to="/form"
+                     className={setActiveLink}
+                     data-testid="form-link"
+                     onClick={() => this.updateHeaderTitle(Paths.form.title)}>Form
+            </NavLink>
           </nav>
         </div>
       </header>
