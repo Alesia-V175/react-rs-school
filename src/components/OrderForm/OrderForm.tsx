@@ -9,6 +9,7 @@ import FormSelect from '../UI/FormSelect/FormSelect.js';
 import FormPopup from '../FormPopup/FormPopup.js';
 import { validationErrorMessage } from '../../constants/componentsConstants';
 import styles from './OrderForm.module.scss';
+import FormCheckbox from '../UI/FormCheckbox/FormCheckbox.js';
 
 class OrderForm extends React.Component<IFormFields, IFormState> {
   formRef: React.RefObject<HTMLFormElement>;
@@ -41,6 +42,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
       emailError: '',
       dateError: '',
       paymentError: '',
+      selectError: '',
       avatarError: '',
       checkboxError: '',
       avatar: '',
@@ -178,6 +180,17 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
       });
     }
 
+    if (!this.selectRef.current?.selectedIndex) {
+      errorCount += 1;
+      this.setState({
+        selectError: validationErrorMessage.selectError,
+      });
+    } else {
+      this.setState({
+        selectError: '',
+      });
+    }
+
     if (!this.checkboxRef.current?.checked) {
       errorCount += 1;
 
@@ -247,6 +260,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
           values={['Wedding', 'Love Story', 'Fashion', 'Animals', 'Advertising', 'Corporate', 'Automobile']}
           name="type"
           ref={this.selectRef}
+          error={this.state.selectError}
         />
         <FormInputFile
           title="Choose your avatar"
@@ -256,7 +270,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
           ref={this.fileUploadRef}
           error={this.state.avatarError}
         />
-        <FormInput
+        <FormCheckbox
           title="I confirm all entered data"
           type="checkbox"
           name="checkbox"

@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column;
   border-bottom: 1px dashed $secondary-bg-color;
-  padding-bottom: 2rem;
   font-family: 'Roboto', Arial, sans-serif;
   font-weight: 100;
 }
@@ -19,4 +18,12 @@
   border-radius: 10rem;
   padding: 0.5em 1em 0.5em 1em;
   outline: none;
+}
+
+.error__wrap {
+  min-height: 2.2rem;
+  color: $fort-error-text;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  text-align: center;
 }

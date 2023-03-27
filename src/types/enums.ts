@@ -2,4 +2,7 @@ export enum RequestMethod {
   GET = 'GET',
 }
 
-export default RequestMethod;
+export enum InputType {
+  text = 'text',
+  date = 'date',
+}

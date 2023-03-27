@@ -98,6 +98,7 @@ export interface IFormState {
   paymentError: string,
   avatarError: string,
   checkboxError: string,
+  selectError: string,
   avatar: string,
   isShowPopup: boolean,
 }
