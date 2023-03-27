@@ -1,0 +1,23 @@
+@import '../../../styles/variables';
+@import '../../../styles/font';
+
+.input__wrap {
+  display: flex;
+  min-width: 50%;
+  border-bottom: 1px dashed $secondary-bg-color;
+
+  &_radio {
+    margin: 0.5rem;
+  }
+
+  padding-bottom: 1rem;
+}
+
+.error__wrap {
+  min-height: 2.2rem;
+  color: $fort-error-text;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  text-align: center;
+}
+

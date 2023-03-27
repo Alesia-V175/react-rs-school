@@ -1,0 +1,16 @@
+@import '../../../styles/variables';
+@import '../../../styles/font';
+
+.input__wrap {
+  border-bottom: 1px dashed $secondary-bg-color;
+  display: flex;
+  flex-direction: column;
+}
+
+.error__wrap {
+  min-height: 2.2rem;
+  color: $fort-error-text;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  text-align: center;
+}

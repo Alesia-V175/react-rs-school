@@ -1,0 +1,43 @@
+@import '../../../styles/variables';
+@import '../../../styles/font';
+
+.input__wrap {
+  border-bottom: 1px dashed $secondary-bg-color;
+}
+
+.input {
+  width: 100%;
+  font-size: 1.8rem;
+  line-height: 1.5;
+  background: rgba(249, 249, 249, 0.67);
+  border: 1px solid #295943;
+  border-radius: 10rem;
+  padding: 0.5em 1em 0.5em 1em;
+
+  &::placeholder {
+    font-weight: 100;
+    opacity: 0.7;
+  }
+
+  &:focus {
+    outline: none;
+    background-color: #FFF;
+    border: 1px solid $active-color;
+    -webkit-box-shadow: 0 0 42px -17px rgba(67,185,127,1);
+    -moz-box-shadow: 0 0 42px -17px rgba(67,185,127,1);
+    box-shadow: 0 0 42px -17px rgba(67,185,127,1);
+  }
+
+}
+
+.label {
+  margin: 1rem 0;
+}
+
+.error__wrap {
+  min-height: 2.2rem;
+  color: $fort-error-text;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  text-align: center;
+}

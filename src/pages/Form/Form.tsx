@@ -3,6 +3,7 @@ import OrderForm from '../../components/OrderForm/OrderForm.js';
 import FormCardsList from '../../components/FormCardsList/FormCardsList.js';
 import { FormCard } from '../../types/types';
 import { IFormCards } from '../../types/interfaces';
+import styles from './Form.module.scss';
 
 class Form extends React.Component {
   state: IFormCards = {
@@ -26,10 +27,11 @@ class Form extends React.Component {
 
   render() {
     return (
-      <>
+      <div className={styles.form__content}>
+        <h1 className={styles.form__title}>Order Your Photo Shoot!</h1>
         <OrderForm onSelect={this.onSelect} data-testid="form"/>
         <FormCardsList items={this.state.items}/>
-      </>
+      </div>
     );
   }
 }

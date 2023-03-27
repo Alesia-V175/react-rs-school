@@ -1,0 +1,24 @@
+@import '../../../styles/variables';
+@import '../../../styles/font';
+
+.select__wrap {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px dashed $secondary-bg-color;
+  padding-bottom: 2rem;
+}
+
+.select {
+  width: 100%;
+  font-size: 1.8rem;
+  line-height: 1.5;
+  background: rgba(249, 249, 249, 0.67);
+  border: 1px solid #295943;
+  border-radius: 10rem;
+  padding: 0.5em 1em 0.5em 1em;
+  outline: none;
+}
+
+.select::-ms-expand {
+  display: none;
+}
