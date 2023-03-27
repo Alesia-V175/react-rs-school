@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode } from 'react';
+import { forwardRef, ReactNode } from 'react';
 import { RefSelect } from '../../../types/types';
 import styles from './FormSelect.module.scss';
 

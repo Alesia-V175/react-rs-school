@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import styles from './FormButton.module.scss';
 import { ButtonType } from '../../../types/types';
 
@@ -9,12 +9,10 @@ interface IFormButton {
   onClick?: () => void,
 }
 
-const FormButton: FC<IFormButton> = (props) => {
-  return (
-    <button {...props} className={ styles.button }>
-      { props.children }
-    </button>
-  );
-};
+const FormButton: FC<IFormButton> = (props) => (
+  <button {...props} className={ styles.button }>
+    { props.children }
+  </button>
+);
 
 export default FormButton;

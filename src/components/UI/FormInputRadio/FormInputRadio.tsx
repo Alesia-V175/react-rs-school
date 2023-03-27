@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode } from 'react';
+import { forwardRef, ReactNode } from 'react';
 import { InputType, Ref } from '../../../types/types';
 import styles from './FormInputRadio.module.scss';
 
