@@ -7,7 +7,15 @@ import FormInputFile from '../UI/FormInputFile/FormInputFile.js';
 import FormInputRadio from '../UI/FormInputRadio/FormInputRadio.js';
 import FormSelect from '../UI/FormSelect/FormSelect.js';
 import FormPopup from '../FormPopup/FormPopup.js';
-import { validationErrorMessage } from '../../constants/componentsConstants';
+import {
+  formInputName,
+  formOptions,
+  formTextValue,
+  labelTitle,
+  validationErrorMessage,
+} from '../../constants/componentsConstants';
+import FormCheckbox from '../UI/FormCheckbox/FormCheckbox.js';
+import { ButtonType, InputType } from '../../types/enums';
 import styles from './OrderForm.module.scss';
 
 class OrderForm extends React.Component<IFormFields, IFormState> {
@@ -41,6 +49,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
       emailError: '',
       dateError: '',
       paymentError: '',
+      selectError: '',
       avatarError: '',
       checkboxError: '',
       avatar: '',
@@ -77,24 +86,24 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
 
     let paymentValue;
 
-    if (this.switcherRef1.current?.checked) {
+    if (this.switcherRef1.current!.checked) {
       paymentValue = this.switcherRef1.current?.value;
     } else {
       paymentValue = this.switcherRef2.current?.value;
     }
 
-    let confirmValue = 'no';
+    let confirmValue = formTextValue.nonConfirmation;
 
-    if (this.checkboxRef.current?.checked) {
-      confirmValue = 'yes';
+    if (this.checkboxRef.current!.checked) {
+      confirmValue = formTextValue.confirmation;
     }
 
     const newCard: FormCard = {
-      name: this.firstNameRef.current?.value as string,
-      email: this.emailRef.current?.value as string,
-      date: this.dateRef.current?.value as string,
+      name: this.firstNameRef.current!.value as string,
+      email: this.emailRef.current!.value as string,
+      date: this.dateRef.current!.value as string,
       payment: paymentValue as string,
-      type: this.selectRef.current?.value as string,
+      type: this.selectRef.current!.value as string,
       confirm: confirmValue,
       avatar: this.state.file,
     };
@@ -112,7 +121,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
   private validate(): number {
     let errorCount = 0;
 
-    if (this.firstNameRef.current && this.firstNameRef.current.value.length < 3) {
+    if (this.firstNameRef.current!.value.length < 3) {
       errorCount += 1;
 
       this.setState({
@@ -178,6 +187,17 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
       });
     }
 
+    if (!this.selectRef.current?.selectedIndex) {
+      errorCount += 1;
+      this.setState({
+        selectError: validationErrorMessage.selectError,
+      });
+    } else {
+      this.setState({
+        selectError: '',
+      });
+    }
+
     if (!this.checkboxRef.current?.checked) {
       errorCount += 1;
 
@@ -194,48 +214,47 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
   }
 
   componentDidMount() {
-    this.firstNameRef?.current?.focus();
+    this.firstNameRef.current!.focus();
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} ref={this.formRef} data-testid="form" className={styles.form}>
+      <form onSubmit={this.handleSubmit} ref={this.formRef} className={styles.form}>
         <FormInput
-          title="Enter your name"
-          type="text"
-          name="firstName"
-          placeholder="Ivan"
+          title={labelTitle.nameTitle}
+          type={InputType.TEXT}
+          name={formInputName.name}
+          placeholder={formTextValue.textPlaceholder}
           ref={this.firstNameRef}
           error={this.state.firstNameError}
         />
         <FormInput
-          title="Enter your E-mail"
-          type="email"
-          name="email"
-          placeholder="IvanIvanov@mail.com"
+          title={labelTitle.emailTitle}
+          type={InputType.EMAIL}
+          name={InputType.EMAIL}
+          placeholder={formTextValue.emailPlaceholder}
           error={this.state.emailError}
           ref={this.emailRef}
         />
         <FormInput
-          title="Choose date of Photo Shoot"
-          type="date"
-          name="date"
+          title={labelTitle.dateTitle}
+          type={InputType.DATE}
+          name={InputType.DATE}
           error={this.state.dateError}
           ref={this.dateRef}
         />
-
         <div>
           <label className={styles.form__label}>Select the payment method</label>
           <div className={styles.form__input_radio}>
           <FormInputRadio
-            type="radio"
-            name="radio"
+            type={InputType.RADIO}
+            name={InputType.RADIO}
             value="cash"
             ref={this.switcherRef1}
           />
           <FormInputRadio
-            type="radio"
-            name="radio"
+            type={InputType.RADIO}
+            name={InputType.RADIO}
             value="card"
             ref={this.switcherRef2}
             error={this.state.paymentError}
@@ -243,29 +262,30 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
           </div>
         </div>
         <FormSelect
-          title="Choose type of Photo Shoot"
-          values={['Wedding', 'Love Story', 'Fashion', 'Animals', 'Advertising', 'Corporate', 'Automobile']}
-          name="type"
+          title={labelTitle.selectTitle}
+          values={formOptions}
+          name={formInputName.select}
           ref={this.selectRef}
+          error={this.state.selectError}
         />
         <FormInputFile
-          title="Choose your avatar"
-          type="file"
-          name="file"
+          title={labelTitle.fileTitle}
+          type={InputType.FILE}
+          name={InputType.FILE}
           save={this.saveFile}
           ref={this.fileUploadRef}
           error={this.state.avatarError}
         />
-        <FormInput
-          title="I confirm all entered data"
-          type="checkbox"
-          name="checkbox"
+        <FormCheckbox
+          title={labelTitle.checkboxTitle}
+          type={InputType.CHECKBOX}
+          name={InputType.CHECKBOX}
           ref={this.checkboxRef}
           error={this.state.checkboxError}
         />
         <div className={styles.form__buttons}>
-          <FormButton type="submit">Confirm</FormButton>
-          <FormButton type="reset">Reset</FormButton>
+          <FormButton type={ButtonType.SUBMIT}>Confirm</FormButton>
+          <FormButton type={ButtonType.RESET}>Reset</FormButton>
         </div>
         <FormPopup
           visible={this.state.isShowPopup}

@@ -1,26 +1,31 @@
 @import '../../../styles/variables';
 @import '../../../styles/font';
 
-.input__wrap {
+.wrap {
   display: flex;
   flex-direction: column;
-  min-width: 50%;
   border-bottom: 1px dashed $secondary-bg-color;
-  padding-bottom: 2rem;
   font-family: 'Roboto', Arial, sans-serif;
   font-weight: 100;
-  position: relative;
+}
 
-  &_radio {
-    margin: 0.5rem;
-    accent-color: $secondary-bg-color;
-  }
+.input__wrap {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: $secondary-bg-color;
+  background: rgba(249, 249, 249, 0.67);
+  border: 1px solid $secondary-bg-color;
+  border-radius: 1rem;
+  margin-right: 1rem;
 }
 
 .error__wrap {
-  position: absolute;
-  bottom: 0;
-  left: -27%;
+  min-height: 2.2rem;
   color: $fort-error-text;
   font-size: 1.2rem;
   line-height: 2rem;
