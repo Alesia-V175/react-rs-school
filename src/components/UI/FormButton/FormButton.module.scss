@@ -1,0 +1,26 @@
+@import '../../../styles/variables';
+@import '../../../styles/font';
+
+.button {
+  width: 40%;
+  padding: 1.5rem;
+  border-radius: 2rem;
+  border: 1px solid $secondary-bg-color;
+  background: $secondary-bg-color;
+  color: $font-primary-color;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 100;
+  font-size: 1.8rem;
+  line-height: 3rem;
+  transition: 0.4s;
+
+  &:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    outline: none;
+    border: 1px solid $active-color;
+    -webkit-box-shadow: 0 0 42px -17px rgba(67,185,127,1);
+    -moz-box-shadow: 0 0 42px -17px rgba(67,185,127,1);
+    box-shadow: 0 0 42px -17px rgba(67,185,127,1);
+  }
+}
