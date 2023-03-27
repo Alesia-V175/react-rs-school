@@ -225,7 +225,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
         />
 
         <div>
-          <label>Select the payment method</label>
+          <label className={styles.form__label}>Select the payment method</label>
           <div className={styles.form__input_radio}>
           <FormInputRadio
             type="radio"
@@ -239,7 +239,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
             value="card"
             ref={this.switcherRef2}
             error={this.state.paymentError}
-            defaultChecked={true}
+            // defaultChecked={true}
           />
           </div>
         </div>

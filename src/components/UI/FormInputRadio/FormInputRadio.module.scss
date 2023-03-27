@@ -3,18 +3,23 @@
 
 .input__wrap {
   display: flex;
+  flex-direction: column;
   min-width: 50%;
   border-bottom: 1px dashed $secondary-bg-color;
+  padding-bottom: 2rem;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 100;
+  position: relative;
 
   &_radio {
     margin: 0.5rem;
   }
-
-  padding-bottom: 1rem;
 }
 
 .error__wrap {
-  min-height: 2.2rem;
+  position: absolute;
+  bottom: 0;
+  left: -27%;
   color: $fort-error-text;
   font-size: 1.2rem;
   line-height: 2rem;
