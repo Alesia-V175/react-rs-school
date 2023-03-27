@@ -3,6 +3,15 @@ export enum RequestMethod {
 }
 
 export enum InputType {
-  text = 'text',
-  date = 'date',
+  TEXT = 'text',
+  EMAIL = 'email',
+  DATE = 'date',
+  RADIO = 'radio',
+  FILE = 'file',
+  CHECKBOX = 'checkbox',
+}
+
+export enum ButtonType {
+  SUBMIT = 'submit',
+  RESET = 'reset',
 }

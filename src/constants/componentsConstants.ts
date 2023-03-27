@@ -8,4 +8,27 @@ export const validationErrorMessage = {
   selectError: 'Please choose the type of photo shoot',
 };
 
+export const labelTitle = {
+  checkboxTitle: 'I confirm all entered data',
+  fileTitle: 'Choose your avatar',
+  selectTitle: 'Choose type of Photo Shoot',
+  nameTitle: 'Enter your name',
+  emailTitle: 'Enter your E-mail',
+  dateTitle: 'Choose date of Photo Shoot',
+};
+
+export const formTextValue = {
+  confirmation: 'Yes',
+  nonConfirmation: 'No',
+  textPlaceholder: 'Ivan',
+  emailPlaceholder: 'IvanIvanov@mail.com',
+};
+
+export const formInputName = {
+  name: 'firstName',
+  select: 'type',
+};
+
+export const formOptions = ['Wedding', 'Love Story', 'Fashion', 'Animals', 'Advertising', 'Corporate', 'Automobile'];
+
 export const emailRegExp = /^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,3})+$/;

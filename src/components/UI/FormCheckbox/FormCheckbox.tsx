@@ -1,5 +1,5 @@
 import React, { forwardRef, ReactNode } from 'react';
-import { InputType } from '../../../types/types';
+import { InputType, Ref } from '../../../types/types';
 import styles from './FormCheckbox.module.scss';
 
 interface Props {
@@ -10,8 +10,6 @@ interface Props {
   value?: string,
   error: string,
 }
-
-export type Ref = HTMLInputElement;
 
 const FormCheckbox = forwardRef<Ref, Props>((props, ref) => {
   return (

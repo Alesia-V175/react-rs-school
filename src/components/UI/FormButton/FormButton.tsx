@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 import styles from './FormButton.module.scss';
+import { ButtonType } from '../../../types/types';
 
 interface IFormButton {
   children: string,
   disabled?: boolean,
-  type: 'button' | 'reset' | 'submit',
+  type: ButtonType,
   onClick?: () => void,
 }
 

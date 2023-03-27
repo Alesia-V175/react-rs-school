@@ -29,7 +29,7 @@ class Form extends React.Component {
     return (
       <div className={styles.form__content}>
         <h1 className={styles.form__title}>Order Your Photo Shoot!</h1>
-        <OrderForm onSelect={this.onSelect} data-testid="form"/>
+        <OrderForm onSelect={this.onSelect} />
         <FormCardsList items={this.state.items}/>
       </div>
     );
