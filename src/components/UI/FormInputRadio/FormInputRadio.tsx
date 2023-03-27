@@ -11,14 +11,16 @@ interface Props {
   defaultChecked?: boolean
 }
 
-const FormInput = forwardRef<Ref, Props>((props, ref) => {
+const FormInputRadio = forwardRef<Ref, Props>((props, ref) => {
   return (
     <div className={styles.input__wrap}>
-      <input ref={ref} {...props} value={props.value} className={styles.input__wrap_radio}/>
-      <label htmlFor={props.value}>{props.value}</label>
+      <div>
+        <input ref={ref} {...props} value={props.value} className={styles.input__wrap_radio}/>
+        <label htmlFor={props.value}>{props.value}</label>
+      </div>
       <p className={styles.error__wrap}>{props.error}</p>
     </div>
   );
 });
 
-export default FormInput;
+export default FormInputRadio;

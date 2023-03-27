@@ -3,6 +3,8 @@
 
 .input__wrap {
   border-bottom: 1px dashed $secondary-bg-color;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 100;
 }
 
 .input {
@@ -27,7 +29,6 @@
     -moz-box-shadow: 0 0 42px -17px rgba(67,185,127,1);
     box-shadow: 0 0 42px -17px rgba(67,185,127,1);
   }
-
 }
 
 .label {
