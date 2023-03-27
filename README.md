@@ -1,6 +1,6 @@
 Instructions:
 
-You need to clone this repo and checkout the branch 'forms' branch or 'develop' branch.
+You need to clone this repo and checkout the necessary branch or 'develop' branch.
 1. npm install (install required packages)
 2. npm run dev (start project in developer mode)
 3. npm run lint (check code style)
