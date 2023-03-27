@@ -8,7 +8,7 @@ import FormInputRadio from '../UI/FormInputRadio/FormInputRadio.js';
 import FormSelect from '../UI/FormSelect/FormSelect.js';
 import FormPopup from '../FormPopup/FormPopup.js';
 import { validationErrorMessage } from '../../constants/componentsConstants';
-// import styles from './OrderForm.module.scss';
+import styles from './OrderForm.module.scss';
 
 class OrderForm extends React.Component<IFormFields, IFormState> {
   formRef: React.RefObject<HTMLFormElement>;
@@ -199,7 +199,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} ref={this.formRef}>
+      <form onSubmit={this.handleSubmit} ref={this.formRef} data-testid="form" className={styles.form}>
         <FormInput
           title="Enter your name"
           type="text"
@@ -223,21 +223,26 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
           error={this.state.dateError}
           ref={this.dateRef}
         />
-        <FormInputRadio
-          title="Select the payment method"
-          type="radio"
-          name="radio"
-          value="cash"
-          ref={this.switcherRef1}
-          error={this.state.paymentError}
-        />
-        <FormInputRadio
-          title=""
-          type="radio"
-          name="radio"
-          value="card"
-          ref={this.switcherRef2}
-        />
+
+        <div>
+          <label>Select the payment method</label>
+          <div className={styles.form__input_radio}>
+          <FormInputRadio
+            type="radio"
+            name="radio"
+            value="cash"
+            ref={this.switcherRef1}
+          />
+          <FormInputRadio
+            type="radio"
+            name="radio"
+            value="card"
+            ref={this.switcherRef2}
+            error={this.state.paymentError}
+            defaultChecked={true}
+          />
+          </div>
+        </div>
         <FormSelect
           title="Choose type of Photo Shoot"
           values={['Wedding', 'Love Story', 'Fashion', 'Animals', 'Advertising', 'Corporate', 'Automobile']}
@@ -259,8 +264,10 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
           ref={this.checkboxRef}
           error={this.state.checkboxError}
         />
-        <FormButton type="submit">Confirm</FormButton>
-        <FormButton type="reset">Reset</FormButton>
+        <div className={styles.form__buttons}>
+          <FormButton type="submit">Confirm</FormButton>
+          <FormButton type="reset">Reset</FormButton>
+        </div>
         <FormPopup
           visible={this.state.isShowPopup}
         />

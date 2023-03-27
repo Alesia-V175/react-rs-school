@@ -1,5 +1,6 @@
 import React, { forwardRef, ReactNode } from 'react';
 import { InputType } from '../../../types/types';
+import styles from './FormInput.module.scss';
 
 interface Props {
   children?: ReactNode,
@@ -16,10 +17,10 @@ export type Ref = HTMLInputElement;
 
 const FormInput = forwardRef<Ref, Props>((props, ref) => {
   return (
-    <div>
-      <label htmlFor={props.name}>{props.title}</label>
-      <input ref={ref} {...props}/>
-      <p>{props.error}</p>
+    <div className={styles.input__wrap}>
+      <label htmlFor={props.name} className={styles.label}>{props.title}</label>
+      <input ref={ref} {...props} className={styles.input}/>
+      <p className={styles.error__wrap}>{props.error}</p>
     </div>
   );
 });

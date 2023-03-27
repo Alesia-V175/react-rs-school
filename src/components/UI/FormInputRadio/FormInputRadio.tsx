@@ -1,21 +1,22 @@
 import React, { forwardRef, ReactNode } from 'react';
 import { InputType, Ref } from '../../../types/types';
+import styles from './FormInputRadio.module.scss';
 
 interface Props {
   children?: ReactNode,
   type: InputType,
   name: string,
-  title: string,
   value: string,
   error?: string,
+  defaultChecked?: boolean
 }
 
 const FormInput = forwardRef<Ref, Props>((props, ref) => {
   return (
-    <div>{props.title}
+    <div className={styles.input__wrap}>
+      <input ref={ref} {...props} value={props.value} className={styles.input__wrap_radio}/>
       <label htmlFor={props.value}>{props.value}</label>
-      <input ref={ref} {...props} value={props.value}/>
-      <p>{props.error}</p>
+      <p className={styles.error__wrap}>{props.error}</p>
     </div>
   );
 });

@@ -1,5 +1,6 @@
 import React, { forwardRef, ReactNode } from 'react';
 import { RefSelect } from '../../../types/types';
+import styles from './FormSelect.module.scss';
 
 interface Props {
   children?: ReactNode,
@@ -12,8 +13,8 @@ interface Props {
 
 const FormSelect = forwardRef<RefSelect, Props>((props, ref) => {
   return (
-    <div>{props.title}
-      <select value={props.value} ref={ref} {...props}>
+    <div className={styles.select__wrap}>{props.title}
+      <select value={props.value} ref={ref} {...props} className={styles.select}>
         {props.values.map((value, index) => {
           return (
             <option key={value} value={value}>
