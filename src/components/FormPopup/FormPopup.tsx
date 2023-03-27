@@ -1,16 +1,18 @@
+import styles from './FormPopup.module.scss';
+
 interface Props {
   visible: boolean
 }
 
 const FormPopup = (props: Props) => {
   return (
-    <>
+    <div className={styles.popup__wrap}>
       {props.visible
-        && <div>
-          <h2>Your order has been successfully created</h2>
+        && <div className={styles.popup}>
+          <h2 className={styles.popup__title}>Your order has been successfully created</h2>
         </div>
       }
-    </>
+    </div>
   );
 };
 
