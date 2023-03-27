@@ -239,7 +239,6 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
             value="card"
             ref={this.switcherRef2}
             error={this.state.paymentError}
-            // defaultChecked={true}
           />
           </div>
         </div>
