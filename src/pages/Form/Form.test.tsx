@@ -1,10 +1,10 @@
 import { describe, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import Form from './Form.js';
+import Form from './Form';
 
-describe('Header', () => {
-  it('Home page should have a banner ', () => {
+describe('Component: Form', () => {
+  it('Should have correct form value ', () => {
     render(<Form />);
-    expect(screen);
+    expect(screen.getByText('Order Your Photo Shoot!')).toBeInTheDocument();
   });
 });

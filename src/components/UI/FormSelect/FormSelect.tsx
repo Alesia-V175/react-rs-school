@@ -12,22 +12,18 @@ interface Props {
   error: string,
 }
 
-const FormSelect = forwardRef<RefSelect, Props>((props, ref) => {
-  return (
-    <div className={styles.select__wrap}>{props.title}
-      <select value={props.value} ref={ref} {...props} className={styles.select}>
-        <option hidden></option>
-        {props.values.map((value, index) => {
-          return (
-            <option key={value} value={value}>
-              {props.options ? props.options[index] : value}
-            </option>
-          );
-        })}
-      </select>
-      <p className={styles.error__wrap}>{props.error}</p>
-    </div>
-  );
-});
+const FormSelect = forwardRef<RefSelect, Props>((props, ref) => (
+  <div className={styles.select__wrap}>{props.title}
+    <select value={props.value} ref={ref} {...props} className={styles.select}>
+      <option hidden></option>
+      {props.values.map((value, index) => (
+        <option key={value} value={value}>
+          {props.options ? props.options[index] : value}
+        </option>
+      ))}
+    </select>
+    <p className={styles.error__wrap}>{props.error}</p>
+  </div>
+));
 
 export default FormSelect;

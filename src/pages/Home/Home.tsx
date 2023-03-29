@@ -1,8 +1,8 @@
 import React from 'react';
 import { ICardItem } from '../../types/interfaces';
-import CardsList from '../../components/CardsList/CardsList.js';
+import CardsList from '../../components/CardsList/CardsList';
 import cardsDB from '../../database/database.json';
-import Search from '../../components/Search/Search.js';
+import Search from '../../components/Search/Search';
 import banner from '../../assets/images/banner-main.jpg';
 import styles from './Home.module.scss';
 

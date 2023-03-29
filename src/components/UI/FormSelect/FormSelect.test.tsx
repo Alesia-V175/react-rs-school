@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import FormSelect from './FormSelect.js';
+import FormSelect from './FormSelect';
 
-describe('Select option', () => {
+describe('Component: FormSelect', () => {
   const list = ['one', 'two', 'three', 'four', 'five'];
 
   it('should render select component', () => {

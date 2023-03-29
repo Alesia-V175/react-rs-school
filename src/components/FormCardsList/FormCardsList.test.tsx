@@ -1,8 +1,8 @@
 import { screen, render } from '@testing-library/react';
-import FormCardsList from './FormCardsList.js';
-import { IFormCardItem } from '../../types/interfaces';
+import FormCardsList from './FormCardsList';
+import { IFormCard } from '../../types/interfaces';
 
-const cards: IFormCardItem[] = [
+const cards: IFormCard[] = [
   {
     name: 'Slava',
     email: 'slavaa@gmail.com',
@@ -32,8 +32,8 @@ const cards: IFormCardItem[] = [
   },
 ];
 
-describe('Form card list', () => {
-  it('should renders list of all form cards', () => {
+describe('Component: FormCardList', () => {
+  it('should render list of all form cards', () => {
     render(<FormCardsList items={ cards } />);
 
     expect(cards.length).toBe(3);

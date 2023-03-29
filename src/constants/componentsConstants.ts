@@ -1,4 +1,4 @@
-export const validationErrorMessage = {
+export const ValidationErrorMessage = {
   nameError: 'Your name must be at least 3 characters long',
   emailError: 'Incorrect email',
   dateError: 'Your date can not be earlier than today',
@@ -8,7 +8,7 @@ export const validationErrorMessage = {
   selectError: 'Please choose the type of photo shoot',
 };
 
-export const labelTitle = {
+export const LabelTitle = {
   checkboxTitle: 'I confirm all entered data',
   fileTitle: 'Choose your avatar',
   selectTitle: 'Choose type of Photo Shoot',
@@ -17,18 +17,18 @@ export const labelTitle = {
   dateTitle: 'Choose date of Photo Shoot',
 };
 
-export const formTextValue = {
+export const FormTextValue = {
   confirmation: 'Yes',
   nonConfirmation: 'No',
   textPlaceholder: 'Ivan',
   emailPlaceholder: 'IvanIvanov@mail.com',
 };
 
-export const formInputName = {
+export const FormInputName = {
   name: 'firstName',
   select: 'type',
 };
 
-export const formOptions = ['Wedding', 'Love Story', 'Fashion', 'Animals', 'Advertising', 'Corporate', 'Automobile'];
+export const FormOptions = ['Wedding', 'Love Story', 'Fashion', 'Animals', 'Advertising', 'Corporate', 'Automobile'];
 
-export const emailRegExp = /^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,3})+$/;
+export const regExp = /^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,3})+$/;
