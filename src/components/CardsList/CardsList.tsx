@@ -1,5 +1,5 @@
 import { ICardsList } from '../../types/interfaces';
-import CardItem from '../CardItem/CardItem.js';
+import CardItem from '../CardItem/CardItem';
 
 const CardsList = ({ cards }: ICardsList) => {
   if (cards?.length) {

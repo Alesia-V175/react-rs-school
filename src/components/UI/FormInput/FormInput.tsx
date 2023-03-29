@@ -13,14 +13,12 @@ interface Props {
   pattern?: string
 }
 
-const FormInput = forwardRef<Ref, Props>((props, ref) => {
-  return (
-    <div className={styles.input__wrap}>
-      <label htmlFor={props.name} className={styles.label}>{props.title}</label>
-      <input ref={ref} {...props} className={styles.input}/>
-      <p className={styles.error__wrap}>{props.error}</p>
-    </div>
-  );
-});
+const FormInput = forwardRef<Ref, Props>((props, ref) => (
+  <div className={styles.input__wrap}>
+    <label htmlFor={props.name} className={styles.label}>{props.title}</label>
+    <input ref={ref} {...props} className={styles.input}/>
+    <p className={styles.error__wrap}>{props.error}</p>
+  </div>
+));
 
 export default FormInput;

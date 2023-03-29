@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '../../assets/icons/logo.svg';
-import styles from './Header.module.scss';
 import { Paths } from '../../constants/constants';
+import styles from './Header.module.scss';
 
 const setActiveLink = ({ isActive }: { isActive: boolean }): string => (
   isActive ? styles.nav__item_active : styles.nav__item

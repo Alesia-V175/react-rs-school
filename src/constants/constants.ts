@@ -17,6 +17,6 @@ export const Paths = {
   },
 };
 
-export const KEY_LOCAL_STORAGE = {
+export const KeyLocalStorage = {
   search: 'search',
 };

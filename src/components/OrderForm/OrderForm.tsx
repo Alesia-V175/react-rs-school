@@ -1,20 +1,19 @@
 import React from 'react';
-import FormButton from '../UI/FormButton/FormButton.js';
-import FormInput from '../UI/FormInput/FormInput.js';
-import { FormCard } from '../../types/types';
-import { IFormFields, IFormState } from '../../types/interfaces';
-import FormInputFile from '../UI/FormInputFile/FormInputFile.js';
-import FormInputRadio from '../UI/FormInputRadio/FormInputRadio.js';
-import FormSelect from '../UI/FormSelect/FormSelect.js';
-import FormPopup from '../FormPopup/FormPopup.js';
+import FormButton from '../UI/FormButton/FormButton';
+import FormInput from '../UI/FormInput/FormInput';
+import { IFormCard, IFormFields, IFormState } from '../../types/interfaces';
+import FormInputFile from '../UI/FormInputFile/FormInputFile';
+import FormInputRadio from '../UI/FormInputRadio/FormInputRadio';
+import FormSelect from '../UI/FormSelect/FormSelect';
+import FormPopup from '../FormPopup/FormPopup';
 import {
-  formInputName,
-  formOptions,
-  formTextValue,
-  labelTitle,
-  validationErrorMessage,
+  FormInputName,
+  FormOptions,
+  FormTextValue,
+  LabelTitle,
+  ValidationErrorMessage,
 } from '../../constants/componentsConstants';
-import FormCheckbox from '../UI/FormCheckbox/FormCheckbox.js';
+import FormCheckbox from '../UI/FormCheckbox/FormCheckbox';
 import { ButtonType, InputType } from '../../types/enums';
 import styles from './OrderForm.module.scss';
 
@@ -39,7 +38,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
 
   fileUploadRef: React.RefObject<HTMLInputElement>;
 
-  onSelect: (item: FormCard) => void;
+  onSelect: (item: IFormCard) => void;
 
   constructor(props: IFormFields) {
     super(props);
@@ -66,15 +65,13 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
     this.switcherRef1 = React.createRef();
     this.switcherRef2 = React.createRef();
     this.fileUploadRef = React.createRef();
-
-    this.saveFile = this.saveFile.bind(this);
   }
 
-  private saveFile(file: string): void {
+  private readonly saveFile = (file: string) => {
     this.setState({
       file,
     });
-  }
+  };
 
   private handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
@@ -92,13 +89,13 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
       paymentValue = this.switcherRef2.current?.value;
     }
 
-    let confirmValue = formTextValue.nonConfirmation;
+    let confirmValue = FormTextValue.nonConfirmation;
 
     if (this.checkboxRef.current!.checked) {
-      confirmValue = formTextValue.confirmation;
+      confirmValue = FormTextValue.confirmation;
     }
 
-    const newCard: FormCard = {
+    const newCard: IFormCard = {
       name: this.firstNameRef.current!.value as string,
       email: this.emailRef.current!.value as string,
       date: this.dateRef.current!.value as string,
@@ -125,7 +122,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
       errorCount += 1;
 
       this.setState({
-        firstNameError: validationErrorMessage.nameError,
+        firstNameError: ValidationErrorMessage.nameError,
       });
     } else {
       this.setState({
@@ -137,7 +134,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
       errorCount += 1;
 
       this.setState({
-        emailError: validationErrorMessage.emailError,
+        emailError: ValidationErrorMessage.emailError,
       });
     } else {
       this.setState({
@@ -154,7 +151,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
       ) {
         errorCount += 1;
         this.setState({
-          dateError: validationErrorMessage.dateError,
+          dateError: ValidationErrorMessage.dateError,
         });
       } else {
         this.setState({
@@ -167,7 +164,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
       errorCount += 1;
 
       this.setState({
-        paymentError: validationErrorMessage.paymentError,
+        paymentError: ValidationErrorMessage.paymentError,
       });
     } else {
       this.setState({
@@ -179,7 +176,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
       errorCount += 1;
 
       this.setState({
-        avatarError: validationErrorMessage.avatarError,
+        avatarError: ValidationErrorMessage.avatarError,
       });
     } else {
       this.setState({
@@ -190,7 +187,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
     if (!this.selectRef.current?.selectedIndex) {
       errorCount += 1;
       this.setState({
-        selectError: validationErrorMessage.selectError,
+        selectError: ValidationErrorMessage.selectError,
       });
     } else {
       this.setState({
@@ -202,7 +199,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
       errorCount += 1;
 
       this.setState({
-        checkboxError: validationErrorMessage.checkboxError,
+        checkboxError: ValidationErrorMessage.checkboxError,
       });
     } else {
       this.setState({
@@ -221,23 +218,23 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
     return (
       <form onSubmit={this.handleSubmit} ref={this.formRef} className={styles.form}>
         <FormInput
-          title={labelTitle.nameTitle}
+          title={LabelTitle.nameTitle}
           type={InputType.TEXT}
-          name={formInputName.name}
-          placeholder={formTextValue.textPlaceholder}
+          name={FormInputName.name}
+          placeholder={FormTextValue.textPlaceholder}
           ref={this.firstNameRef}
           error={this.state.firstNameError}
         />
         <FormInput
-          title={labelTitle.emailTitle}
+          title={LabelTitle.emailTitle}
           type={InputType.EMAIL}
           name={InputType.EMAIL}
-          placeholder={formTextValue.emailPlaceholder}
+          placeholder={FormTextValue.emailPlaceholder}
           error={this.state.emailError}
           ref={this.emailRef}
         />
         <FormInput
-          title={labelTitle.dateTitle}
+          title={LabelTitle.dateTitle}
           type={InputType.DATE}
           name={InputType.DATE}
           error={this.state.dateError}
@@ -262,14 +259,14 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
           </div>
         </div>
         <FormSelect
-          title={labelTitle.selectTitle}
-          values={formOptions}
-          name={formInputName.select}
+          title={LabelTitle.selectTitle}
+          values={FormOptions}
+          name={FormInputName.select}
           ref={this.selectRef}
           error={this.state.selectError}
         />
         <FormInputFile
-          title={labelTitle.fileTitle}
+          title={LabelTitle.fileTitle}
           type={InputType.FILE}
           name={InputType.FILE}
           save={this.saveFile}
@@ -277,7 +274,7 @@ class OrderForm extends React.Component<IFormFields, IFormState> {
           error={this.state.avatarError}
         />
         <FormCheckbox
-          title={labelTitle.checkboxTitle}
+          title={LabelTitle.checkboxTitle}
           type={InputType.CHECKBOX}
           name={InputType.CHECKBOX}
           ref={this.checkboxRef}

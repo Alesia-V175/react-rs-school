@@ -1,4 +1,4 @@
-import FormCardItem from '../FormCardItem/FormCardItem.js';
+import FormCardItem from '../FormCardItem/FormCardItem';
 import { IFormCards } from '../../types/interfaces';
 import styles from './FormCardList.module.scss';
 

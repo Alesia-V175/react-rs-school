@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import styles from './FormButton.module.scss';
 import { ButtonType } from '../../../types/types';
+import styles from './FormButton.module.scss';
 
 interface IFormButton {
   children: string,

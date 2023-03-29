@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import FormInput from './FormInput.js';
+import FormInput from './FormInput';
 
 describe('Form input type text', () => {
   it('should render input form component', () => {

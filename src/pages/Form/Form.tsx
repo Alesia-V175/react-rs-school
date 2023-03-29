@@ -1,8 +1,7 @@
 import React from 'react';
-import OrderForm from '../../components/OrderForm/OrderForm.js';
-import FormCardsList from '../../components/FormCardsList/FormCardsList.js';
-import { FormCard } from '../../types/types';
-import { IFormCards } from '../../types/interfaces';
+import OrderForm from '../../components/OrderForm/OrderForm';
+import FormCardsList from '../../components/FormCardsList/FormCardsList';
+import { IFormCard, IFormCards } from '../../types/interfaces';
 import styles from './Form.module.scss';
 
 class Form extends React.Component {
@@ -10,20 +9,15 @@ class Form extends React.Component {
     items: [],
   };
 
-  constructor(props: string) {
-    super(props);
-    this.onSelect = this.onSelect.bind(this);
-  }
-
-  onSelect(card: FormCard): void {
-    const allCards: FormCard[] = [...this.state.items];
+  private onSelect = (card: IFormCard) => {
+    const allCards: IFormCard[] = [...this.state.items];
 
     allCards.push(card);
 
     this.setState({
       items: allCards,
     });
-  }
+  };
 
   render() {
     return (

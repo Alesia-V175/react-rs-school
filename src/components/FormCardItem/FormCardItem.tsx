@@ -1,9 +1,9 @@
-import { IFormCardItem } from '../../types/interfaces';
+import { IFormCard } from '../../types/interfaces';
 import styles from './FormCardItem.module.scss';
 
 const FormCardItem = ({
   name, email, date, payment, type, confirm, avatar,
-}: IFormCardItem) => (
+}: IFormCard) => (
   <li className={styles.card}>
     <div className={styles.card__img_wrap}>
       <img src={avatar} alt={name} className={styles.card__img}/>

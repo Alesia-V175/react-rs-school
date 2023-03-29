@@ -1,9 +1,9 @@
 import { describe, it } from 'vitest';
 import { screen, render } from '@testing-library/react';
-import Footer from './Footer.js';
+import Footer from './Footer';
 
-describe('Footer', () => {
-  it('render footer', () => {
+describe('Component: Footer', () => {
+  it('should render correct text inside footer', () => {
     render(<Footer />);
 
     expect(screen.getByText('© by Alesia Sokolovskaya 2023')).toBeInTheDocument();
