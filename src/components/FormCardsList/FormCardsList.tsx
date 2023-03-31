@@ -12,6 +12,7 @@ const FormCardsList = ({ items }: IFormCards) => {
       </ul>
     );
   }
+
   return null;
 };
 
