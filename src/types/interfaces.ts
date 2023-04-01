@@ -64,11 +64,11 @@ export interface ICardsList {
 export interface IFormCard {
   name: string,
   email: string,
-  date: string,
-  payment: string,
+  date: Date,
+  radio: string,
   type: string,
-  confirm: string,
-  avatar: string,
+  checkbox: boolean,
+  file: string,
 }
 
 export interface IFormCards {
@@ -77,17 +77,4 @@ export interface IFormCards {
 
 export interface IFormFields {
   onSelect: (item: IFormCard) => void;
-}
-
-export interface IFormState {
-  file: string,
-  firstNameError: string,
-  emailError: string,
-  dateError: string,
-  paymentError: string,
-  avatarError: string,
-  checkboxError: string,
-  selectError: string,
-  avatar: string,
-  isShowPopup: boolean,
 }

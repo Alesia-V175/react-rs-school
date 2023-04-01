@@ -5,11 +5,11 @@ import FormCardItem from './FormCardItem';
 const card: IFormCard = {
   name: 'Alisa',
   email: 'alisa@gmail.com',
-  date: '2023-04-01',
-  payment: 'card',
+  date: new Date('2023-04-01'),
+  radio: 'card',
   type: 'Wedding',
-  confirm: 'yes',
-  avatar: 'https://img.championat.com/c/900x900/news/big/c/s/avatar-3-avatar-4-i-avatar-5-kogda-zhdat_16724205581265002556.jpg',
+  checkbox: true,
+  file: 'https://img.championat.com/c/900x900/news/big/c/s/avatar-3-avatar-4-i-avatar-5-kogda-zhdat_16724205581265002556.jpg',
 };
 
 describe('Component: FormCardItem', () => {

@@ -11,6 +11,17 @@ export enum InputType {
   CHECKBOX = 'checkbox',
 }
 
+export enum InputName {
+  NAME = 'name',
+  TEXT = 'text',
+  EMAIL = 'email',
+  DATE = 'date',
+  RADIO = 'radio',
+  FILE = 'file',
+  CHECKBOX = 'checkbox',
+  SELECT = 'type',
+}
+
 export enum ButtonType {
   SUBMIT = 'submit',
   RESET = 'reset',
