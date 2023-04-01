@@ -1,0 +1,55 @@
+@import '../../styles/variables';
+@import '../../styles/font';
+
+.header {
+  background: $secondary-bg-color;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+.header__wrap {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  margin: 0 auto;
+}
+
+.header__logo {
+  transition: 0.4s;
+}
+
+.header__logo:hover {
+  transform: scale(1.1);
+}
+
+.header__logo_img {
+  display: block;
+}
+
+.header__title {
+  font-weight: 100;
+  color: $font-secondary-color;
+  opacity: 0.7;
+}
+
+.nav__item {
+  color: $font-secondary-color;
+  padding: 1rem;
+  margin: 0 0.5rem;
+  font-size: 1.8rem;
+  transition: 0.4s;
+}
+
+.nav__item:hover{
+  color: $active-color;
+}
+
+.nav__item_active {
+  color: $font-primary-color;
+  padding: 1rem;
+  margin: 0 0.5rem;
+  font-size: 1.8rem;
+  transition: 0.4s;
+  border-bottom: 1px solid $active-color;
+}
