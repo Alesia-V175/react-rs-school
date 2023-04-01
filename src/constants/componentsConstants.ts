@@ -25,11 +25,6 @@ export const FormTextValue = {
   emailPlaceholder: 'IvanIvanov@mail.com',
 };
 
-export const FormInputName = {
-  name: 'name',
-  select: 'type',
-};
-
 export const FormOptions = ['Wedding', 'Love Story', 'Fashion', 'Animals', 'Advertising', 'Corporate', 'Automobile'];
 
 export const regExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
