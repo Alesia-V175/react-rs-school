@@ -4,9 +4,9 @@ import logo from '../../assets/icons/logo.svg';
 import styles from './Header.module.scss';
 import { Paths } from '../../constants/constants';
 
-const setActiveLink = ({ isActive }: { isActive: boolean }): string => {
-  return isActive ? styles.nav__item_active : styles.nav__item;
-};
+const setActiveLink = ({ isActive }: { isActive: boolean }): string => (
+  isActive ? styles.nav__item_active : styles.nav__item
+);
 
 const getRouteTitle = () => {
   const currUrl = window.location.pathname;
@@ -30,7 +30,8 @@ class Header extends React.Component<{ headerTitle?: string }> {
             <img src={logo}
                  alt="Photo's Time"
                  title="Photo's Time"
-                 className={styles.header__logo_img}/>
+                 className={styles.header__logo_img}
+            />
           </NavLink>
           <h2 className={styles.header__title}>{this.state.headerTitle}</h2>
           <nav data-testid="navbar">
@@ -43,6 +44,11 @@ class Header extends React.Component<{ headerTitle?: string }> {
                      className={setActiveLink}
                      data-testid="about-link"
                      onClick={() => this.updateHeaderTitle(Paths.about.title)}>About us
+            </NavLink>
+            <NavLink to="/form"
+                     className={setActiveLink}
+                     data-testid="form-link"
+                     onClick={() => this.updateHeaderTitle(Paths.form.title)}>Form
             </NavLink>
           </nav>
         </div>

@@ -1,11 +1,15 @@
 export const Paths = {
   home: {
     path: '/',
-    title: 'Home page',
+    title: 'Home',
   },
   about: {
     path: '/about',
-    title: 'About Us page',
+    title: 'About Us',
+  },
+  form: {
+    path: '/form',
+    title: 'Form',
   },
   error: {
     path: '*',
