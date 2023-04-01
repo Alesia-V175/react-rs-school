@@ -1,4 +1,5 @@
 export const ValidationErrorMessage = {
+  requiredError: 'This field is required',
   nameError: 'Your name must be at least 3 characters long',
   emailError: 'Incorrect email',
   dateError: 'Your date can not be earlier than today',
@@ -24,11 +25,11 @@ export const FormTextValue = {
   emailPlaceholder: 'IvanIvanov@mail.com',
 };
 
-export const FormInputName = {
-  name: 'firstName',
-  select: 'type',
-};
-
 export const FormOptions = ['Wedding', 'Love Story', 'Fashion', 'Animals', 'Advertising', 'Corporate', 'Automobile'];
 
-export const regExp = /^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,3})+$/;
+export const regExp = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+
+export const InputPaymentValue = {
+  card: 'card',
+  cash: 'cash',
+};

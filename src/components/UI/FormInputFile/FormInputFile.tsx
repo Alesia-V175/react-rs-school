@@ -1,13 +1,14 @@
 import React, { forwardRef, ReactNode } from 'react';
+import { FieldError } from 'react-hook-form';
 import { InputType, Ref } from '../../../types/types';
 import styles from './FormInputFile.module.scss';
 
 interface Props {
   children?: ReactNode,
   type: InputType,
-  name: string,
+  name?: string,
   title?: string,
-  error: string,
+  error?: FieldError,
   save: (file: string) => void,
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -26,7 +27,11 @@ const FormInput = forwardRef<Ref, Props>((props, ref) => (
         }
       }}
     />
-    <p className={styles.error__wrap}>{props.error}</p>
+    <p className={styles.error__wrap}>
+      {props.error && props.error.message && (
+        <>{props.error.message}</>
+      )}
+    </p>
   </div>
 ));
 

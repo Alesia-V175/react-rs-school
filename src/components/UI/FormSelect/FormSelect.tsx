@@ -1,4 +1,5 @@
-import { forwardRef, ReactNode } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
+import { FieldError } from 'react-hook-form';
 import { RefSelect } from '../../../types/types';
 import styles from './FormSelect.module.scss';
 
@@ -9,7 +10,7 @@ interface Props {
   value?: string,
   values: string[],
   options?: string[],
-  error: string,
+  error?: FieldError,
 }
 
 const FormSelect = forwardRef<RefSelect, Props>((props, ref) => (
@@ -22,7 +23,11 @@ const FormSelect = forwardRef<RefSelect, Props>((props, ref) => (
         </option>
       ))}
     </select>
-    <p className={styles.error__wrap}>{props.error}</p>
+    <p className={styles.error__wrap}>
+      {props.error && props.error.message && (
+        <>{props.error.message}</>
+      )}
+    </p>
   </div>
 ));
 

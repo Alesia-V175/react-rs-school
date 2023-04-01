@@ -7,7 +7,7 @@ describe('Component: FormSelect', () => {
 
   it('should render select component', () => {
     render(
-      <FormSelect name="select" title="Select value" values={list} error="error test"/>,
+      <FormSelect name="select" title="Select value" values={list}/>,
     );
 
     const options = screen.getAllByRole('option');
