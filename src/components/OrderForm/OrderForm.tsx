@@ -15,6 +15,7 @@ import {
 } from '../../constants/componentsConstants';
 import { ButtonType, InputName, InputType } from '../../types/enums';
 import { IFormCard } from '../../types/interfaces';
+import isDateInFuture from '../../utils/checkDate';
 import styles from './OrderForm.module.scss';
 
 interface Props {
@@ -37,28 +38,15 @@ const OrderForm = ({ setItems }: Props) => {
     reValidateMode: 'onSubmit',
   });
 
-  const saveFile = (inputFileUrl: string) => {
-    setFile(inputFileUrl);
-  };
+  const onSubmit = (data: IFormCard) => {
+    setItems({ ...data, file });
 
-  const isDateInFuture = (date: Date) => {
-    const todayDate = new Date();
-    const userDate = new Date(date);
-
-    return userDate.getTime() > todayDate.getTime();
-  };
-
-  const showPopup = () => {
     setPopup(true);
 
     setTimeout(() => {
       setPopup(false);
     }, 4000);
-  };
 
-  const onSubmit = (data: IFormCard) => {
-    setItems({ ...data, file });
-    showPopup();
     reset();
   };
 
@@ -72,6 +60,7 @@ const OrderForm = ({ setItems }: Props) => {
         type={InputType.TEXT}
         placeholder={FormTextValue.textPlaceholder}
         error={errors[InputName.NAME]}
+        data-testid="name"
         {...register(InputName.NAME, {
           required: ValidationErrorMessage.requiredError,
           minLength: {
@@ -85,6 +74,7 @@ const OrderForm = ({ setItems }: Props) => {
         type={InputType.EMAIL}
         placeholder={FormTextValue.emailPlaceholder}
         error={errors[InputName.EMAIL]}
+        data-testid="email"
         {...register(InputName.EMAIL, {
           required: ValidationErrorMessage.requiredError,
           pattern: {
@@ -97,6 +87,7 @@ const OrderForm = ({ setItems }: Props) => {
         title={LabelTitle.dateTitle}
         type={InputType.DATE}
         error={errors[InputName.DATE]}
+        data-testid="date"
         {...register(InputName.DATE, {
           required: ValidationErrorMessage.requiredError,
           valueAsDate: true,
@@ -125,6 +116,7 @@ const OrderForm = ({ setItems }: Props) => {
         title={LabelTitle.selectTitle}
         values={FormOptions}
         error={errors[InputName.SELECT]}
+        data-testid="select"
         {...register(InputName.SELECT, {
           required: ValidationErrorMessage.selectError,
         })}
@@ -132,8 +124,9 @@ const OrderForm = ({ setItems }: Props) => {
       <FormInputFile
         title={LabelTitle.fileTitle}
         type={InputType.FILE}
-        save={saveFile}
+        save={setFile}
         error={errors[InputName.FILE]}
+        data-testid="file"
         {...register(InputName.FILE, {
           required: ValidationErrorMessage.avatarError,
         })}
@@ -142,13 +135,14 @@ const OrderForm = ({ setItems }: Props) => {
         title={LabelTitle.checkboxTitle}
         type={InputType.CHECKBOX}
         error={errors[InputName.CHECKBOX]}
+        data-testid="checkbox"
         {...register(InputName.CHECKBOX, {
           required: ValidationErrorMessage.checkboxError,
         })}
       />
       <div className={styles.form__buttons}>
-        <FormButton type={ButtonType.SUBMIT}>Confirm</FormButton>
-        <FormButton type={ButtonType.RESET}>Reset</FormButton>
+        <FormButton type={ButtonType.SUBMIT} data-testid="submit">Confirm</FormButton>
+        <FormButton type={ButtonType.RESET} data-testid="reset">Reset</FormButton>
       </div>
       <FormPopup
        visible={popup}

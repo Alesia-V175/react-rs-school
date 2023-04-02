@@ -9,6 +9,7 @@ describe('Component: CardItem', () => {
 
   it('should render correct card value', () => {
     render(<CardItem {...card}/>);
+
     expect(screen.getByAltText(card.alt_description)).toBeInTheDocument();
     expect(screen.getByText('Created at:')).toBeInTheDocument();
   });
