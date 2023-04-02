@@ -17,6 +17,7 @@ const FormInput = forwardRef<Ref, Props>((props, ref) => (
   <div className={styles.input__wrap}>
     <label htmlFor={props.name}>{props.title}</label>
     <input
+      data-testid={props.type}
       ref={ref}
       type={props.type}
       name={props.name}

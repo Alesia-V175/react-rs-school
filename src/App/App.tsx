@@ -7,7 +7,7 @@ import Form from '../pages/Form/Form';
 import styles from './App.module.scss';
 
 const App = () => (
-<div className={styles.App}>
+<div className={styles.App} data-testid="root">
   <Routes>
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
