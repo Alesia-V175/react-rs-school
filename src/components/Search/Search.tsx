@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { KeyLocalStorage } from '../../constants/constants';
 import styles from './Search.module.scss';
 
@@ -7,15 +7,33 @@ const Search = ():JSX.Element => {
     const savedSearchValue = localStorage.getItem(KeyLocalStorage.search);
 
     if (savedSearchValue) {
-      return JSON.parse(savedSearchValue);
+      return savedSearchValue;
     }
 
     return '';
   });
 
+  const searchRef = useRef(searchValue);
+
   useEffect(() => {
-    localStorage.setItem(KeyLocalStorage.search, JSON.stringify(searchValue));
+    searchRef.current = searchValue;
   }, [searchValue]);
+
+  useEffect(() => {
+    const savedSearchValue = localStorage.getItem(KeyLocalStorage.search);
+
+    if (savedSearchValue) {
+      setSearchValue(savedSearchValue);
+    }
+
+    return () => {
+      localStorage.setItem(KeyLocalStorage.search, searchRef.current);
+    };
+  }, []);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
+  };
 
   return (
     <div className={styles.search}>
@@ -24,7 +42,7 @@ const Search = ():JSX.Element => {
         placeholder="Search a photo"
         className={styles.search__input}
         value={searchValue}
-        onChange={(event) => setSearchValue(event.target.value)}
+        onChange={handleChange}
       />
     </div>
   );
