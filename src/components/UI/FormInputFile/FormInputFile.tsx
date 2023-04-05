@@ -3,7 +3,7 @@ import { FieldError } from 'react-hook-form';
 import { InputType, Ref } from '../../../types/types';
 import styles from './FormInputFile.module.scss';
 
-interface Props {
+interface IProps {
   children?: ReactNode,
   type: InputType,
   name?: string,
@@ -13,7 +13,7 @@ interface Props {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const FormInput = forwardRef<Ref, Props>((props, ref) => (
+const FormInput = forwardRef<Ref, IProps>((props, ref): JSX.Element => (
   <div className={styles.input__wrap}>
     <label htmlFor={props.name}>{props.title}</label>
     <input
@@ -29,9 +29,7 @@ const FormInput = forwardRef<Ref, Props>((props, ref) => (
       }}
     />
     <p className={styles.error__wrap}>
-      {props.error && props.error.message && (
-        <>{props.error.message}</>
-      )}
+      {props.error && props.error.message}
     </p>
   </div>
 ));

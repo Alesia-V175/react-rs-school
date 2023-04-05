@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import FormButton from '../UI/FormButton/FormButton';
-import FormInput from '../UI/FormInput/FormInput';
-import FormInputFile from '../UI/FormInputFile/FormInputFile';
-import FormInputRadio from '../UI/FormInputRadio/FormInputRadio';
-import FormSelect from '../UI/FormSelect/FormSelect';
-import FormCheckbox from '../UI/FormCheckbox/FormCheckbox';
-import FormPopup from '../FormPopup/FormPopup';
+import FormButton from '../UI/FormButton';
+import FormInput from '../UI/FormInput';
+import FormInputFile from '../UI/FormInputFile';
+import FormInputRadio from '../UI/FormInputRadio';
+import FormSelect from '../UI/FormSelect';
+import FormCheckbox from '../UI/FormCheckbox';
+import FormPopup from '../FormPopup';
 import {
   FormOptions,
   FormTextValue, InputPaymentValue,
@@ -18,11 +18,11 @@ import { IFormCard } from '../../types/interfaces';
 import isDateInFuture from '../../utils/checkDate';
 import styles from './OrderForm.module.scss';
 
-interface Props {
+interface IProps {
   setItems: (item: IFormCard) => void;
 }
 
-const OrderForm = ({ setItems }: Props) => {
+const OrderForm = ({ setItems }: IProps): JSX.Element => {
   const [file, setFile] = useState('');
   const [popup, setPopup] = useState(false);
 

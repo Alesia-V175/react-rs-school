@@ -1,4 +1,3 @@
-import React from 'react';
 import { FieldError } from 'react-hook-form';
 import { render, screen } from '@testing-library/react';
 import FormInput from './FormInput';
@@ -12,7 +11,7 @@ describe('Component: FormInput', () => {
   });
 });
 
-interface Props {
+interface IProps {
   type: InputType,
   name: string,
   title: string,
@@ -21,7 +20,7 @@ interface Props {
 
 describe('Component: FormInput', () => {
   it('should render input with correct props', () => {
-    const prop: Props = {
+    const prop: IProps = {
       type: 'date',
       title: 'testing',
       name: 'test-date',
@@ -35,7 +34,7 @@ describe('Component: FormInput', () => {
 
 describe('Component: FormInput', () => {
   it('should render input form component with error', () => {
-    const prop: Props = {
+    const prop: IProps = {
       type: 'date',
       title: 'testing',
       name: 'test-date',

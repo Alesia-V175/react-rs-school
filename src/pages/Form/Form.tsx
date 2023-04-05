@@ -1,10 +1,10 @@
 import React, { FC, useState } from 'react';
-import OrderForm from '../../components/OrderForm/OrderForm';
-import FormCardsList from '../../components/FormCardsList/FormCardsList';
+import OrderForm from '../../components/OrderForm';
+import FormCardsList from '../../components/FormCardsList';
 import { IFormCard } from '../../types/interfaces';
 import styles from './Form.module.scss';
 
-const Form: FC = () => {
+const Form: FC = (): JSX.Element => {
   const [items, setItems] = useState<IFormCard[]>([]);
 
   const getFormItems = (data: IFormCard) => {

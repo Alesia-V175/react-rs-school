@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { KeyLocalStorage } from '../../constants/constants';
 import styles from './Search.module.scss';
 
-const Search = ():JSX.Element => {
+const Search = (): JSX.Element => {
   const [searchValue, setSearchValue] = useState(() => {
     const savedSearchValue = localStorage.getItem(KeyLocalStorage.search);
 

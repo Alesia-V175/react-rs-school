@@ -42,6 +42,12 @@
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-explicit-any": 2,
     "@typescript-eslint/no-var-reqiures": "off",
+    "no-restricted-exports": [
+      "error",
+      { "restrictDefaultExports": {
+        "defaultFrom": false
+      }}
+    ],
     "arrow-body-style": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",

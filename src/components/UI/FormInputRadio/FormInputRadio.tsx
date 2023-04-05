@@ -1,9 +1,9 @@
-import React, { forwardRef, ReactNode } from 'react';
+import { forwardRef, ReactNode } from 'react';
 import { FieldError } from 'react-hook-form';
 import { InputType, Ref } from '../../../types/types';
 import styles from './FormInputRadio.module.scss';
 
-interface Props {
+interface IProps {
   children?: ReactNode,
   type: InputType,
   name?: string,
@@ -12,16 +12,14 @@ interface Props {
   defaultChecked?: boolean
 }
 
-const FormInputRadio = forwardRef<Ref, Props>((props, ref) => (
+const FormInputRadio = forwardRef<Ref, IProps>((props, ref): JSX.Element => (
   <div className={styles.input__wrap}>
     <div>
       <input ref={ref} {...props} value={props.value} className={styles.input__wrap_radio}/>
       <label htmlFor={props.value}>{props.value}</label>
     </div>
     <p className={styles.error__wrap}>
-      {props.error && props.error.message && (
-        <>{props.error.message}</>
-      )}
+      {props.error && props.error.message}
     </p>
   </div>
 ));

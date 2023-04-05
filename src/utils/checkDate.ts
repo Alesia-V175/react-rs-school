@@ -1,8 +1,3 @@
-const isDateInFuture = (date: Date) => {
-  const todayDate = new Date();
-  const userDate = new Date(date);
-
-  return userDate.getTime() > todayDate.getTime();
-};
+const isDateInFuture = (date: Date) => new Date(date).getTime() > new Date().getTime();
 
 export default isDateInFuture;
