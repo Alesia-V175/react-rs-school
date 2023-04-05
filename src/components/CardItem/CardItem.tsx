@@ -2,7 +2,7 @@ import { ICardItem } from '../../types/interfaces';
 import likeIcon from '../../assets/icons/heart.svg';
 import styles from './CardItem.module.scss';
 
-const CardItem = (card: ICardItem) => {
+const CardItem = (card: ICardItem): JSX.Element => {
   const [date] = new Date(card.created_at).toISOString().split('T');
 
   return (

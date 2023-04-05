@@ -9,7 +9,7 @@ interface IFormButton {
   onClick?: () => void,
 }
 
-const FormButton: FC<IFormButton> = (props) => (
+const FormButton: FC<IFormButton> = (props): JSX.Element => (
   <button {...props} className={ styles.button }>
     { props.children }
   </button>

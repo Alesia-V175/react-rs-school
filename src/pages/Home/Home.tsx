@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import CardsList from '../../components/CardsList/CardsList';
+import CardsList from '../../components/CardsList';
 import cardsDB from '../../database/database.json';
 import Search from '../../components/Search/Search';
 import banner from '../../assets/images/banner-main.jpg';
 import styles from './Home.module.scss';
 
 const Home = (): JSX.Element => {
-  const [cards] = useState(cardsDB);
+  const cards = cardsDB;
 
   return (
     <>

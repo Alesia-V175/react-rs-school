@@ -1,7 +1,7 @@
 import { ICardsList } from '../../types/interfaces';
-import CardItem from '../CardItem/CardItem';
+import CardItem from '../CardItem';
 
-const CardsList = ({ cards }: ICardsList) => {
+const CardsList = ({ cards }: ICardsList): JSX.Element => {
   if (cards?.length) {
     return (
       <>

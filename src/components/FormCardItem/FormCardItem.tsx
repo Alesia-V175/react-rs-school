@@ -1,9 +1,8 @@
-import React from 'react';
 import { IFormCard } from '../../types/interfaces';
 import styles from './FormCardItem.module.scss';
 
-const FormCardItem = (data: IFormCard) => {
-  const date = new Date(data.date).toISOString().split('T')[0];
+const FormCardItem = (data: IFormCard): JSX.Element => {
+  const [date] = new Date(data.date).toISOString().split('T');
 
   return (
     <li className={styles.card}>
@@ -16,9 +15,7 @@ const FormCardItem = (data: IFormCard) => {
       <div><span>Payment: </span>{data.radio}</div>
       <div><span>Type of photo shoot: </span>{data.type}</div>
       <div><span>Confirmation: </span>
-        {data.checkbox && (
-          <>Yes</>
-        )}
+        {data.checkbox && 'Yes'}
       </div>
     </li>
   );

@@ -1,10 +1,10 @@
 import styles from './FormPopup.module.scss';
 
-interface Props {
+interface IProps {
   visible: boolean
 }
 
-const FormPopup = (props: Props) => (
+const FormPopup = (props: IProps): JSX.Element => (
   <div className={styles.popup__wrap}>
     {props.visible
       && <div className={styles.popup}>
