@@ -1,11 +1,10 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
-import FormInputRadio from './FormInputRadio.js';
+import FormInputRadio from './FormInputRadio';
 
-describe('Form input type radio', () => {
+describe('Component: FormInputRadio', () => {
   it('should render input form component', () => {
     render(<FormInputRadio type="radio" value="cash" name="payment"/>);
 
-    expect(screen);
+    expect(screen.getByText('cash')).toBeInTheDocument();
   });
 });

@@ -1,4 +1,4 @@
-import { FormCard } from './types';
+import { CardItemKeys } from './types';
 
 export interface ICardItem {
   id: string,
@@ -11,8 +11,8 @@ export interface ICardItem {
   blur_hash: string,
   description: string | null,
   alt_description: string,
-  urls: { [key: string]:string },
-  links: { [key: string]:string },
+  urls: CardItemKeys,
+  links: CardItemKeys,
   likes: number,
   liked_by_user: boolean,
   current_user_collections: string[],
@@ -32,8 +32,8 @@ export interface IUser {
   portfolio_url: string | null,
   bio: string | null,
   location: string | null,
-  links: { [key: string]:string },
-  profile_image: { [key: string]:string },
+  links: CardItemKeys,
+  profile_image: CardItemKeys,
   instagram_username: string | null,
   total_collections: number,
   total_likes: number,
@@ -61,33 +61,20 @@ export interface ICardsList {
   cards?: ICardItem[];
 }
 
+export interface IFormCard {
+  name: string,
+  email: string,
+  date: Date,
+  radio: string,
+  type: string,
+  checkbox: boolean,
+  file: string,
+}
+
 export interface IFormCards {
-  items: FormCard[],
+  items: IFormCard[],
 }
 
 export interface IFormFields {
-  onSelect: (item: FormCard) => void;
-}
-
-export interface IFormState {
-  file: string,
-  firstNameError: string,
-  emailError: string,
-  dateError: string,
-  paymentError: string,
-  avatarError: string,
-  checkboxError: string,
-  selectError: string,
-  avatar: string,
-  isShowPopup: boolean,
-}
-
-export interface IFormCardItem {
-  name: string,
-  email: string,
-  date: string,
-  payment: string,
-  type: string,
-  confirm: string,
-  avatar: string,
+  onSelect: (item: IFormCard) => void;
 }

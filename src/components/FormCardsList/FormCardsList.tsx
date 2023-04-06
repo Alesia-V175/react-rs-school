@@ -1,4 +1,4 @@
-import FormCardItem from '../FormCardItem/FormCardItem.js';
+import FormCardItem from '../FormCardItem';
 import { IFormCards } from '../../types/interfaces';
 import styles from './FormCardList.module.scss';
 
@@ -12,6 +12,7 @@ const FormCardsList = ({ items }: IFormCards) => {
       </ul>
     );
   }
+
   return null;
 };
 

@@ -1,10 +1,10 @@
 {
   "parser": "@typescript-eslint/parser",
   "extends": [
-    "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "eslint:recommended",
     "airbnb-base",
     "airbnb-typescript/base"
   ],
@@ -42,6 +42,12 @@
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-explicit-any": 2,
     "@typescript-eslint/no-var-reqiures": "off",
+    "no-restricted-exports": [
+      "error",
+      { "restrictDefaultExports": {
+        "defaultFrom": false
+      }}
+    ],
     "arrow-body-style": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
@@ -49,13 +55,7 @@
       "error",
       {"devDependencies": true}
     ],
-    "import/extensions": [
-      "error",
-      "ignorePackages", {
-        "ts": "never",
-        "tsx": "never"
-      }
-    ]
+    "import/extensions": "off"
   },
   "settings": {
     "react": {

@@ -1,7 +1,7 @@
 import banner from '../../assets/images/about-banner.jpg';
 import styles from './About.module.scss';
 
-const About = () => (
+const About = (): JSX.Element => (
   <>
     <div className={styles.about__banner}>
       <img src={banner} alt="banner" className={styles.about__banner_img}/>

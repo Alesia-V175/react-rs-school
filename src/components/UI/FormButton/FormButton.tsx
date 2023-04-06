@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import styles from './FormButton.module.scss';
 import { ButtonType } from '../../../types/types';
+import styles from './FormButton.module.scss';
 
 interface IFormButton {
   children: string,
@@ -9,7 +9,7 @@ interface IFormButton {
   onClick?: () => void,
 }
 
-const FormButton: FC<IFormButton> = (props) => (
+const FormButton: FC<IFormButton> = (props): JSX.Element => (
   <button {...props} className={ styles.button }>
     { props.children }
   </button>
