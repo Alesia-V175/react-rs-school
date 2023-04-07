@@ -2,7 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { KeyLocalStorage } from '../../constants/constants';
 import styles from './Search.module.scss';
 
-const Search = (): JSX.Element => {
+interface ISearch {
+  searchCards: (str: string) => void;
+}
+
+const Search = ({ searchCards }: ISearch): JSX.Element => {
   const [searchValue, setSearchValue] = useState(() => {
     const savedSearchValue = localStorage.getItem(KeyLocalStorage.search);
 
@@ -35,6 +39,12 @@ const Search = (): JSX.Element => {
     setSearchValue(event.target.value);
   };
 
+  const handleKeyEvent = (event: React.KeyboardEvent<HTMLElement>): void => {
+    if (event.key === 'Enter') {
+      searchCards(searchValue);
+    }
+  };
+
   return (
     <div className={styles.search}>
       <input
@@ -43,6 +53,7 @@ const Search = (): JSX.Element => {
         className={styles.search__input}
         value={searchValue}
         onChange={handleChange}
+        onKeyDown={handleKeyEvent}
       />
     </div>
   );

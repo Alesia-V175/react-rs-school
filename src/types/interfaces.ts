@@ -58,7 +58,7 @@ export interface ISponsor {
 }
 
 export interface ICardsList {
-  cards?: ICardItem[];
+  cards: ICardItem[];
 }
 
 export interface IFormCard {
@@ -77,4 +77,10 @@ export interface IFormCards {
 
 export interface IFormFields {
   onSelect: (item: IFormCard) => void;
+}
+
+export interface ISearchParams {
+  total: number,
+  total_pages: number,
+  results: ICardItem[],
 }

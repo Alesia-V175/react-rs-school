@@ -1,11 +1,30 @@
+import { useEffect, useState } from 'react';
+import Api from '../../Api/Api';
 import CardsList from '../../components/CardsList';
-import cardsDB from '../../database/database.json';
 import Search from '../../components/Search/Search';
 import banner from '../../assets/images/banner-main.jpg';
+import { ICardItem } from '../../types/interfaces';
 import styles from './Home.module.scss';
 
 const Home = (): JSX.Element => {
-  const cards = cardsDB;
+  const [loading, setLoading] = useState(false);
+  const [cardList, setCardList] = useState<ICardItem[]>([]);
+
+  const getSearchCards = async (query: string) => {
+    setLoading(true);
+    const searchCardList = await Api.searchListCards(query);
+    setCardList(searchCardList);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    async function getData(): Promise<void> {
+      const cards: ICardItem[] = await Api.getListCards();
+      setCardList(cards);
+    }
+
+    getData();
+  }, []);
 
   return (
     <>
@@ -14,10 +33,15 @@ const Home = (): JSX.Element => {
       </div>
       <div className={styles.main__content}>
         <h1 className={styles.main__title}>Explore the world with a photo!</h1>
-        <Search />
+        <Search searchCards={getSearchCards}/>
+        {loading ? (
+          <div className="loader-container">LOADING...
+          </div>
+        ) : (
         <section className={styles.main__cards}>
-          <CardsList cards={cards} />
+          <CardsList cards={cardList}/>
         </section>
+        )}
       </div>
     </>
   );
