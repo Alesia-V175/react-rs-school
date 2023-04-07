@@ -4,6 +4,7 @@ import CardsList from '../../components/CardsList';
 import Search from '../../components/Search/Search';
 import banner from '../../assets/images/banner-main.jpg';
 import { ICardItem } from '../../types/interfaces';
+import Preloader from '../../components/Preloader';
 import styles from './Home.module.scss';
 
 const Home = (): JSX.Element => {
@@ -14,7 +15,10 @@ const Home = (): JSX.Element => {
     setLoading(true);
     const searchCardList = await Api.searchListCards(query);
     setCardList(searchCardList);
-    setLoading(false);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 2500);
   };
 
   useEffect(() => {
@@ -35,8 +39,7 @@ const Home = (): JSX.Element => {
         <h1 className={styles.main__title}>Explore the world with a photo!</h1>
         <Search searchCards={getSearchCards}/>
         {loading ? (
-          <div className="loader-container">LOADING...
-          </div>
+          <Preloader />
         ) : (
         <section className={styles.main__cards}>
           <CardsList cards={cardList}/>
