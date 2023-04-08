@@ -1,16 +1,24 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { KeyLocalStorage } from '../../constants/constants';
 import styles from './Search.module.scss';
 
-const Search = (): JSX.Element => {
-  const [searchValue, setSearchValue] = useState(() => {
-    const savedSearchValue = localStorage.getItem(KeyLocalStorage.search);
+interface ISearch {
+  searchCards: (str: string) => void;
+}
 
-    if (savedSearchValue) {
-      return savedSearchValue;
+const Search = ({ searchCards }: ISearch): JSX.Element => {
+  const [searchValue, setSearchValue] = useState(() => {
+    let savedSearchValue = localStorage.getItem(KeyLocalStorage.search);
+
+    if (!savedSearchValue) {
+      savedSearchValue = '';
     }
 
-    return '';
+    return savedSearchValue;
   });
 
   const searchRef = useRef(searchValue);
@@ -20,11 +28,13 @@ const Search = (): JSX.Element => {
   }, [searchValue]);
 
   useEffect(() => {
-    const savedSearchValue = localStorage.getItem(KeyLocalStorage.search);
+    let savedSearchValue = localStorage.getItem(KeyLocalStorage.search);
 
-    if (savedSearchValue) {
-      setSearchValue(savedSearchValue);
+    if (!savedSearchValue) {
+      savedSearchValue = '';
     }
+
+    setSearchValue(savedSearchValue);
 
     return () => {
       localStorage.setItem(KeyLocalStorage.search, searchRef.current);
@@ -35,6 +45,12 @@ const Search = (): JSX.Element => {
     setSearchValue(event.target.value);
   };
 
+  const handleKeyEvent = (event: React.KeyboardEvent<HTMLElement>): void => {
+    if (event.key === 'Enter') {
+      searchCards(searchValue);
+    }
+  };
+
   return (
     <div className={styles.search}>
       <input
@@ -43,6 +59,7 @@ const Search = (): JSX.Element => {
         className={styles.search__input}
         value={searchValue}
         onChange={handleChange}
+        onKeyDown={handleKeyEvent}
       />
     </div>
   );

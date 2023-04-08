@@ -1,12 +1,29 @@
+import React, { useState } from 'react';
 import { ICardItem } from '../../types/interfaces';
 import likeIcon from '../../assets/icons/heart.svg';
+import Api from '../../Api/Api';
+import FullCardItem from '../FullCardItem';
 import styles from './CardItem.module.scss';
 
 const CardItem = (card: ICardItem): JSX.Element => {
+  const [cardDetailed, setCardDetailed] = useState<ICardItem | undefined>();
+
   const [date] = new Date(card.created_at).toISOString().split('T');
 
+  const handleClick = () => {
+    if (!cardDetailed) {
+      Api.getCard(card.id)
+        .then((cardItem) => {
+          setCardDetailed(cardItem);
+        });
+    }
+  };
+
   return (
-    <div className={styles.card__wrap}>
+    <div className={styles.card__wrap} onClick={handleClick}>
+      {cardDetailed ? (
+        <FullCardItem card={cardDetailed} close={() => setCardDetailed(undefined)}/>
+      ) : (<></>)}
       <div className={styles.card__photo}>
         <img src={card.urls.small} alt={card.alt_description} className={styles.card__photo_img}/>
       </div>
