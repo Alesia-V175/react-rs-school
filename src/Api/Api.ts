@@ -25,7 +25,7 @@ class Api {
     return [];
   }
 
-  public static async searchListCards(query: string): Promise<ISearchParams> {
+  public static async searchListCards(query: string): Promise<ICardItem[]> {
     const url = `${this.API_URL}/search/photos?per_page=51&query=${query}`;
 
     const response = await fetch(url, {
@@ -36,11 +36,29 @@ class Api {
     });
 
     if (response.ok) {
-      const res = await response.json();
+      const res: ISearchParams = await response.json();
       return res.results;
     }
 
-    return {};
+    return [];
+  }
+
+  public static async getCard(id: string): Promise<ICardItem | undefined> {
+    const url = `${this.API_URL}/photos/${id}`;
+
+    const response = await fetch(url, {
+      method: RequestMethod.GET,
+      headers: {
+        Authorization: `Client-ID ${this.ACCESS_KEY}`,
+      },
+    });
+
+    if (response.ok) {
+      const res = await response.json();
+      return res;
+    }
+
+    return undefined;
   }
 }
 

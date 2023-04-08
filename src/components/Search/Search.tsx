@@ -1,4 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { KeyLocalStorage } from '../../constants/constants';
 import styles from './Search.module.scss';
 
@@ -8,13 +12,13 @@ interface ISearch {
 
 const Search = ({ searchCards }: ISearch): JSX.Element => {
   const [searchValue, setSearchValue] = useState(() => {
-    const savedSearchValue = localStorage.getItem(KeyLocalStorage.search);
+    let savedSearchValue = localStorage.getItem(KeyLocalStorage.search);
 
-    if (savedSearchValue) {
-      return savedSearchValue;
+    if (!savedSearchValue) {
+      savedSearchValue = '';
     }
 
-    return '';
+    return savedSearchValue;
   });
 
   const searchRef = useRef(searchValue);
@@ -24,11 +28,13 @@ const Search = ({ searchCards }: ISearch): JSX.Element => {
   }, [searchValue]);
 
   useEffect(() => {
-    const savedSearchValue = localStorage.getItem(KeyLocalStorage.search);
+    let savedSearchValue = localStorage.getItem(KeyLocalStorage.search);
 
-    if (savedSearchValue) {
-      setSearchValue(savedSearchValue);
+    if (!savedSearchValue) {
+      savedSearchValue = '';
     }
+
+    setSearchValue(savedSearchValue);
 
     return () => {
       localStorage.setItem(KeyLocalStorage.search, searchRef.current);

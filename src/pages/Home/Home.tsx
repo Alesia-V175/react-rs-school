@@ -5,6 +5,7 @@ import Search from '../../components/Search/Search';
 import banner from '../../assets/images/banner-main.jpg';
 import { ICardItem } from '../../types/interfaces';
 import Preloader from '../../components/Preloader';
+import { KeyLocalStorage } from '../../constants/constants';
 import styles from './Home.module.scss';
 
 const Home = (): JSX.Element => {
@@ -13,21 +14,24 @@ const Home = (): JSX.Element => {
 
   const getSearchCards = async (query: string) => {
     setLoading(true);
-    const searchCardList = await Api.searchListCards(query);
+    const searchCardList = query
+      ? await Api.searchListCards(query)
+      : await Api.getListCards();
     setCardList(searchCardList);
 
     setTimeout(() => {
       setLoading(false);
-    }, 2500);
+    }, 2000);
   };
 
   useEffect(() => {
-    async function getData(): Promise<void> {
-      const cards: ICardItem[] = await Api.getListCards();
-      setCardList(cards);
+    let savedSearchValue = localStorage.getItem(KeyLocalStorage.search);
+
+    if (!savedSearchValue) {
+      savedSearchValue = '';
     }
 
-    getData();
+    getSearchCards(savedSearchValue);
   }, []);
 
   return (

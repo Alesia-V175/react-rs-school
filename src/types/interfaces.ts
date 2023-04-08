@@ -19,6 +19,9 @@ export interface ICardItem {
   sponsorship: ISponsor | null,
   topic_submissions: object,
   user: IUser,
+  tags_preview?: ICardTag[],
+  views?: number,
+  downloads?: number,
 }
 
 export interface IUser {
@@ -40,7 +43,12 @@ export interface IUser {
   total_photos: number,
   accepted_tos: boolean,
   for_hire: boolean,
-  social: ISocial
+  social: ISocial,
+}
+
+export interface ICardTag {
+  type: string
+  title: string,
 }
 
 export interface ISocial {

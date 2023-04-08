@@ -1,0 +1,153 @@
+@import '../../styles/variables';
+@import '../../styles/font';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  backdrop-filter: blur(3rem);
+  overflow: hidden;
+  background-color: rgba(255,255,255,0.3);
+  cursor: pointer;
+}
+
+.card {
+  display: flex;
+  width: 80%;
+  position: relative;
+  background: $font-primary-color;
+  box-shadow: 2px 4px 12px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 4rem;
+  padding: 2rem;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 100;
+  font-size: 2rem;
+  line-height: 3.5rem;
+  color: $font-text-color;
+
+  &__photo {
+    border-radius: 2rem;
+    width: 40rem;
+    overflow: hidden;
+
+    &_img {
+      display: block;
+      width: 40rem;
+      height: 40rem;
+      object-fit: cover;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc(100% - 40rem);
+    padding-left: 2rem;
+
+    &_detailed {
+      font-weight: 400;
+    }
+  }
+
+  &__icon_wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+
+    &_like {
+      width: 2rem;
+      height: 2rem;
+      object-fit: contain;
+      margin-right: 1rem;
+      transition: 0.4s;
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+      }
+    }
+
+    &_view {
+      width: 3rem;
+      height: 3rem;
+      object-fit: contain;
+      transition: 0.4s;
+      margin-right: 1rem;
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__color {
+    display: flex;
+    align-items: center;
+
+    &_input {
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      background: none;
+      width: 6rem;
+      height: 6rem;
+      border: 0;
+      cursor: pointer;
+      margin-left: 1rem;
+
+      &:focus{
+        border-radius: 0;
+        outline: none;
+      }
+
+      &::-webkit-color-swatch{
+        border: 0;
+        border-radius: 0;
+      }
+
+      &::-moz-color-swatch,
+      &::-moz-focus-inner{
+        border: 0;
+      }
+
+      &::-moz-focus-inner{
+        padding: 0;
+      }
+    }
+  }
+
+  &__cross {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    z-index: 2;
+  }
+}
+
+.body__overlay {
+  overflow: hidden;
+}
+
+@media (max-width: 970px) {
+  .card {
+    flex-direction: column;
+    width: 48rem;
+
+    &__description {
+      width: 100%;
+      padding: 2rem 0 0;
+    }
+  }
+}
