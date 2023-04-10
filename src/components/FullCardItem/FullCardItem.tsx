@@ -1,3 +1,4 @@
+import { MouseEventHandler } from 'react';
 import { ICardItem } from '../../types/interfaces';
 import likeIcon from '../../assets/icons/heart.svg';
 import viewIcon from '../../assets/icons/view.svg';
@@ -13,9 +14,13 @@ interface IFullCard {
 const FullCardItem = ({ card, close }: IFullCard): JSX.Element => {
   const [date] = new Date(card.created_at).toISOString().split('T');
 
+  const handleClick: MouseEventHandler<HTMLDivElement> = (event) => {
+    event.stopPropagation();
+  };
+
   return (
     <div className={styles.wrapper} onClick={close}>
-      <div className={styles.card}>
+      <div className={styles.card} onClick={handleClick}>
         <div className={styles.card__photo}>
           <img src={card.urls.small} alt={card.alt_description} className={styles.card__photo_img}/>
         </div>
