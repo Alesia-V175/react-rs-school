@@ -1,4 +1,5 @@
 import React, {
+  FormEventHandler,
   useEffect,
   useRef,
   useState,
@@ -11,15 +12,7 @@ interface ISearch {
 }
 
 const Search = ({ searchCards }: ISearch): JSX.Element => {
-  const [searchValue, setSearchValue] = useState(() => {
-    let savedSearchValue = localStorage.getItem(KeyLocalStorage.search);
-
-    if (!savedSearchValue) {
-      savedSearchValue = '';
-    }
-
-    return savedSearchValue;
-  });
+  const [searchValue, setSearchValue] = useState(() => localStorage.getItem(KeyLocalStorage.search) ?? '');
 
   const searchRef = useRef(searchValue);
 
@@ -28,11 +21,7 @@ const Search = ({ searchCards }: ISearch): JSX.Element => {
   }, [searchValue]);
 
   useEffect(() => {
-    let savedSearchValue = localStorage.getItem(KeyLocalStorage.search);
-
-    if (!savedSearchValue) {
-      savedSearchValue = '';
-    }
+    const savedSearchValue = localStorage.getItem(KeyLocalStorage.search) ?? '';
 
     setSearchValue(savedSearchValue);
 
@@ -45,22 +34,21 @@ const Search = ({ searchCards }: ISearch): JSX.Element => {
     setSearchValue(event.target.value);
   };
 
-  const handleKeyEvent = (event: React.KeyboardEvent<HTMLElement>): void => {
-    if (event.key === 'Enter') {
-      searchCards(searchValue);
-    }
+  const handleKeyEvent: FormEventHandler<HTMLFormElement> = () => {
+    searchCards(searchValue);
   };
 
   return (
     <div className={styles.search}>
+      <form onSubmit={handleKeyEvent}>
       <input
         type="search"
         placeholder="Search a photo"
         className={styles.search__input}
         value={searchValue}
         onChange={handleChange}
-        onKeyDown={handleKeyEvent}
       />
+      </form>
     </div>
   );
 };

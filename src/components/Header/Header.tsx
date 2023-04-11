@@ -30,7 +30,7 @@ const Header = (): JSX.Element => {
           />
         </NavLink>
         <h2 className={styles.header__title}>{headerTitle}</h2>
-        <nav data-testid="navbar">
+        <nav className={styles.nav} data-testid="navbar">
           <NavLink
             to="/"
             className={setActiveLink}
