@@ -34,20 +34,22 @@ const Search = ({ searchCards }: ISearch): JSX.Element => {
     setSearchValue(event.target.value);
   };
 
-  const handleKeyEvent: FormEventHandler<HTMLFormElement> = () => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (event): void => {
+    event.preventDefault();
     searchCards(searchValue);
+    localStorage.setItem(KeyLocalStorage.search, searchValue);
   };
 
   return (
     <div className={styles.search}>
-      <form onSubmit={handleKeyEvent}>
-      <input
-        type="search"
-        placeholder="Search a photo"
-        className={styles.search__input}
-        value={searchValue}
-        onChange={handleChange}
-      />
+      <form onSubmit={handleSubmit}>
+        <input
+          type="search"
+          placeholder="Search a photo"
+          className={styles.search__input}
+          value={searchValue}
+          onChange={handleChange}
+        />
       </form>
     </div>
   );
