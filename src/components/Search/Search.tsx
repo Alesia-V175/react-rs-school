@@ -1,17 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  FormEventHandler,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { KeyLocalStorage } from '../../constants/constants';
 import styles from './Search.module.scss';
 
-const Search = (): JSX.Element => {
-  const [searchValue, setSearchValue] = useState(() => {
-    const savedSearchValue = localStorage.getItem(KeyLocalStorage.search);
+interface ISearch {
+  searchCards: (str: string) => void;
+}
 
-    if (savedSearchValue) {
-      return savedSearchValue;
-    }
-
-    return '';
-  });
+const Search = ({ searchCards }: ISearch): JSX.Element => {
+  const [searchValue, setSearchValue] = useState(() => localStorage.getItem(KeyLocalStorage.search) ?? '');
 
   const searchRef = useRef(searchValue);
 
@@ -20,11 +21,9 @@ const Search = (): JSX.Element => {
   }, [searchValue]);
 
   useEffect(() => {
-    const savedSearchValue = localStorage.getItem(KeyLocalStorage.search);
+    const savedSearchValue = localStorage.getItem(KeyLocalStorage.search) ?? '';
 
-    if (savedSearchValue) {
-      setSearchValue(savedSearchValue);
-    }
+    setSearchValue(savedSearchValue);
 
     return () => {
       localStorage.setItem(KeyLocalStorage.search, searchRef.current);
@@ -35,15 +34,23 @@ const Search = (): JSX.Element => {
     setSearchValue(event.target.value);
   };
 
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (event): void => {
+    event.preventDefault();
+    searchCards(searchValue);
+    localStorage.setItem(KeyLocalStorage.search, searchValue);
+  };
+
   return (
     <div className={styles.search}>
-      <input
-        type="search"
-        placeholder="Search a photo"
-        className={styles.search__input}
-        value={searchValue}
-        onChange={handleChange}
-      />
+      <form onSubmit={handleSubmit}>
+        <input
+          type="search"
+          placeholder="Search a photo"
+          className={styles.search__input}
+          value={searchValue}
+          onChange={handleChange}
+        />
+      </form>
     </div>
   );
 };

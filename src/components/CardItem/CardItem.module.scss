@@ -107,6 +107,10 @@
   }
 }
 
+.body__overlay {
+  overflow: hidden;
+}
+
 
 @media (max-width: 420px) {
   .card__photo_img {

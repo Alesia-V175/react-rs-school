@@ -4,11 +4,11 @@ import OrderForm from './OrderForm';
 
 const getFormItems = vitest.fn();
 
-beforeEach(() => {
-  render(<OrderForm setItems={getFormItems} />);
-});
-
 describe('Component: OrderForm', () => {
+  beforeEach(() => {
+    render(<OrderForm setItems={getFormItems} />);
+  });
+
   it('should render form', () => {
     expect(screen.getByText('cash')).toBeInTheDocument();
   });
