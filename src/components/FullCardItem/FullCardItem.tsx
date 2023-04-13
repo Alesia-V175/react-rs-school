@@ -32,16 +32,20 @@ const FullCardItem = ({ card, close }: IFullCard): JSX.Element => {
           <div>Description:
             <span className={styles.card__description_detailed}> {card.alt_description}</span>
           </div>
-          {card.tags_preview && card.tags_preview.length ? (
-            <div>Tags:
-              {card.tags_preview && card.tags_preview.map((value) => (
-                <span
-                  className={styles.card__description_detailed}
-                  key={value.title}> {value.title},
-                </span>
-              ))}
-            </div>
-          ) : (<></>)}
+          {
+            card.tags_preview
+            && !!card.tags_preview.length
+            && (
+              <div>Tags:
+                {card.tags_preview && card.tags_preview.map((value) => (
+                  <span
+                    className={styles.card__description_detailed}
+                    key={value.title}> {value.title},
+                  </span>
+                ))}
+              </div>
+            )
+          }
           <div>Photo from user:
             <span className={styles.card__description_detailed}> {card.user.username}</span>
           </div>

@@ -6,11 +6,12 @@ import database from '../../database/database.json';
 
 const data = vitest.fn();
 const card: ICardItem = database[0];
-beforeEach(() => {
-  render(<FullCardItem card={card} close={data} />);
-});
 
 describe('Component: FullCardItem', () => {
+  beforeEach(() => {
+    render(<FullCardItem card={card} close={data} />);
+  });
+
   it('should render correct image', () => {
     expect(screen.getByAltText(card.alt_description)).toBeInTheDocument();
   });

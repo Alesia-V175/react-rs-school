@@ -10,20 +10,20 @@ const CardItem = (card: ICardItem): JSX.Element => {
 
   const [date] = new Date(card.created_at).toISOString().split('T');
 
-  const handleClick = () => {
+  const handleClick = async () => {
     if (!cardDetailed) {
-      Api.getCard(card.id)
-        .then((cardItem) => {
-          setCardDetailed(cardItem);
-        });
+      const response = await Api.getCard(card.id);
+      setCardDetailed(response);
     }
   };
 
   return (
     <div className={styles.card__wrap} onClick={handleClick}>
-      {cardDetailed ? (
-        <FullCardItem card={cardDetailed} close={() => setCardDetailed(undefined)}/>
-      ) : (<></>)}
+      {cardDetailed
+        && (
+          <FullCardItem card={cardDetailed} close={() => setCardDetailed(undefined)}/>
+        )
+      }
       <div className={styles.card__photo}>
         <img src={card.urls.small} alt={card.alt_description} className={styles.card__photo_img}/>
       </div>
