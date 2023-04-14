@@ -83,10 +83,6 @@ export interface IFormCards {
   items: IFormCard[],
 }
 
-export interface IFormFields {
-  onSelect: (item: IFormCard) => void;
-}
-
 export interface ISearchParams {
   total: number,
   total_pages: number,

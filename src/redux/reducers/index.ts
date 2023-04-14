@@ -1,26 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const slice = createSlice({
-  name: 'cards',
-  initialState: {
-    cards: [],
-  },
+const initStateSearch = {
+  stateSearch: '',
+};
+
+export const searchSlice = createSlice({
+  name: 'search',
+  initialState: initStateSearch,
   reducers: {
-    // getListCards(state, action) {
-    //   console.log(state);
-    //   console.log(action);
-    // },
-    // searchListCards(state, action) {
-    //   console.log(state);
-    //   console.log(action);
-    // },
-    // getCard(state, action) {
-    //   console.log(state);
-    //   console.log(action);
-    // },
+    changeSearch: (state, action: PayloadAction<string>) => {
+      const stateValue = state;
+      stateValue.stateSearch = action.payload;
+    },
   },
 });
 
-// export const { getListCards, searchListCards, getCard } = slice.actions;
-
-export default slice.reducer;
+export const { actions, reducer } = searchSlice;

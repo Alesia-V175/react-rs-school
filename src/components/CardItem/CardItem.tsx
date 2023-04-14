@@ -4,9 +4,11 @@ import likeIcon from '../../assets/icons/heart.svg';
 import Api from '../../Api/Api';
 import FullCardItem from '../FullCardItem';
 import styles from './CardItem.module.scss';
+// import {useGetCardQuery} from "../../redux/api/cardsApi";
 
 const CardItem = (card: ICardItem): JSX.Element => {
   const [cardDetailed, setCardDetailed] = useState<ICardItem | undefined>();
+  // const { data, isLoading } = useGetCardQuery(card)
 
   const [date] = new Date(card.created_at).toISOString().split('T');
 
