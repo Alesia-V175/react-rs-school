@@ -1,29 +1,22 @@
 import { useSelector } from 'react-redux';
-import { useGetCardsListQuery, useGetSearchListCardsQuery } from '../../redux/api/cardsApi';
+import { useGetSearchListCardsQuery } from '../../redux/api/cardsApi';
 import { RootState } from '../../redux/store';
 import CardsList from '../../components/CardsList';
 import Search from '../../components/Search/Search';
 import Preloader from '../../components/Preloader';
-import banner from '../../assets/images/banner-main.jpg';
 import { ICardItem } from '../../types/interfaces';
+import { InitStateValue } from '../../constants/constants';
+import banner from '../../assets/images/banner-main.jpg';
 import styles from './Home.module.scss';
 
 const Home = (): JSX.Element => {
-  const searchStateValue = useSelector<RootState, string>((state) => state.search.stateSearch);
-  let dataCards: ICardItem[];
-  let isAppLoading;
-
-  if (searchStateValue) {
-    const { data, isLoading } = useGetSearchListCardsQuery(searchStateValue);
-    isAppLoading = isLoading;
-    dataCards = data?.results as ICardItem[];
-  } else {
-    const { data, isLoading } = useGetCardsListQuery();
-    isAppLoading = isLoading;
-    dataCards = data as ICardItem[];
+  let searchStateValue = useSelector<RootState, string>((state) => state.search.stateSearch);
+  if (!searchStateValue) {
+    searchStateValue = InitStateValue.state;
   }
+  const { data, isLoading } = useGetSearchListCardsQuery(searchStateValue);
 
-  if (isAppLoading) {
+  if (isLoading) {
     return <Preloader />;
   }
 
@@ -35,11 +28,11 @@ const Home = (): JSX.Element => {
       <div className={styles.main__content}>
         <h1 className={styles.main__title}>Explore the world with a photo!</h1>
         <Search />
-        {isAppLoading ? (
+        {isLoading ? (
           <Preloader />
         ) : (
         <section className={styles.main__cards}>
-          <CardsList cards={dataCards}/>
+          <CardsList cards={data?.results as ICardItem[]}/>
         </section>
         )}
       </div>

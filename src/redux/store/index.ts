@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { cardsApi } from '../api/cardsApi';
-import { searchSlice, reducer as searchReducer } from '../reducers';
+import { search, reducer as searchReducer } from '../reducers/search';
+import { form, reducer as formReducer } from '../reducers/form';
 
 const store = configureStore({
   reducer: {
     [cardsApi.reducerPath]: cardsApi.reducer,
-    [searchSlice.name]: searchReducer,
+    [search.name]: searchReducer,
+    [form.name]: formReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(cardsApi.middleware),
 });

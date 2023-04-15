@@ -22,9 +22,8 @@ const cardsApi = createApi({
         params: { query: search },
         ...common,
       }),
-      // transformResponse: (response: ISearchParams) => response.results ?? [],
     }),
-    getCardsList: builder.query<ICardItem[], void>({
+    getCardsList: builder.query<ICardItem[], string>({
       query: () => ({
         url: 'photos?per_page=51',
         ...common,
