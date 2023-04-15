@@ -9,7 +9,7 @@ const card: ICardItem = database[0];
 
 describe('Component: FullCardItem', () => {
   beforeEach(() => {
-    render(<FullCardItem card={card} close={data} />);
+    render(<FullCardItem cardItem={card} close={data} />);
   });
 
   it('should render correct image', () => {

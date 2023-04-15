@@ -72,7 +72,7 @@ export interface ICardsList {
 export interface IFormCard {
   name: string,
   email: string,
-  date: Date,
+  date: string,
   radio: string,
   type: string,
   checkbox: boolean,

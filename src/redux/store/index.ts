@@ -9,7 +9,9 @@ const store = configureStore({
     [search.name]: searchReducer,
     [form.name]: formReducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(cardsApi.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: false,
+  }).concat(cardsApi.middleware),
 });
 
 export default store;
