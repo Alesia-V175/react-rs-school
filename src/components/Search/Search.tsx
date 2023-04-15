@@ -1,34 +1,16 @@
 import React, {
   FormEventHandler,
-  useEffect,
-  useRef,
   useState,
 } from 'react';
-import { KeyLocalStorage } from '../../constants/constants';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import useActions from '../../redux/hooks/useActions';
 import styles from './Search.module.scss';
 
-interface ISearch {
-  searchCards: (str: string) => void;
-}
-
-const Search = ({ searchCards }: ISearch): JSX.Element => {
-  const [searchValue, setSearchValue] = useState(() => localStorage.getItem(KeyLocalStorage.search) ?? '');
-
-  const searchRef = useRef(searchValue);
-
-  useEffect(() => {
-    searchRef.current = searchValue;
-  }, [searchValue]);
-
-  useEffect(() => {
-    const savedSearchValue = localStorage.getItem(KeyLocalStorage.search) ?? '';
-
-    setSearchValue(savedSearchValue);
-
-    return () => {
-      localStorage.setItem(KeyLocalStorage.search, searchRef.current);
-    };
-  }, []);
+const Search = (): JSX.Element => {
+  const { changeSearch } = useActions();
+  const stateSearch = useSelector<RootState, string>((state) => state.search.stateSearch);
+  const [searchValue, setSearchValue] = useState(stateSearch);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
@@ -36,8 +18,7 @@ const Search = ({ searchCards }: ISearch): JSX.Element => {
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event): void => {
     event.preventDefault();
-    searchCards(searchValue);
-    localStorage.setItem(KeyLocalStorage.search, searchValue);
+    changeSearch(searchValue);
   };
 
   return (
