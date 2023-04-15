@@ -23,6 +23,10 @@ const Home = (): JSX.Element => {
     dataCards = data as ICardItem[];
   }
 
+  if (isAppLoading) {
+    return <Preloader />;
+  }
+
   return (
     <>
       <div className={styles.main__banner}>

@@ -22,6 +22,7 @@ const cardsApi = createApi({
         params: { query: search },
         ...common,
       }),
+      // transformResponse: (response: ISearchParams) => response.results ?? [],
     }),
     getCardsList: builder.query<ICardItem[], void>({
       query: () => ({

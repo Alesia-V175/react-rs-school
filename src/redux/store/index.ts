@@ -7,7 +7,7 @@ const store = configureStore({
     [cardsApi.reducerPath]: cardsApi.reducer,
     [searchSlice.name]: searchReducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({}).concat(cardsApi.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(cardsApi.middleware),
 });
 
 export default store;
