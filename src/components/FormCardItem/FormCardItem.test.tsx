@@ -5,7 +5,7 @@ import FormCardItem from './FormCardItem';
 const card: IFormCard = {
   name: 'Alisa',
   email: 'alisa@gmail.com',
-  date: new Date('2023-04-01'),
+  date: '2023-04-01',
   radio: 'card',
   type: 'Wedding',
   checkbox: true,

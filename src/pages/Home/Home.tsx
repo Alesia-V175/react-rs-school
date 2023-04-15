@@ -16,10 +16,6 @@ const Home = (): JSX.Element => {
   }
   const { data, isLoading } = useGetSearchListCardsQuery(searchStateValue);
 
-  if (isLoading) {
-    return <Preloader />;
-  }
-
   return (
     <>
       <div className={styles.main__banner}>
