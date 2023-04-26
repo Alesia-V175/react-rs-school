@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { cardsApi } from '../configuration/cardsApi';
+import { cardsApi} from '../configuration/cardsApi';
 import { search, reducer as searchReducer } from '../reducers/search';
 import { form, reducer as formReducer } from '../reducers/form';
 
