@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import logo from '../../assets/icons/logo.svg';
 import { Paths } from '../../constants/constants';
 import styles from './Header.module.scss';
@@ -8,14 +8,30 @@ const setActiveLink = ({ isActive }: { isActive: boolean }): string => (
   isActive ? styles.nav__item_active : styles.nav__item
 );
 
-const getRouteTitle = () => {
-  const currUrl = window.location.pathname;
-  return Object.values(Paths).find((page) => page.path === currUrl)?.title || '';
-};
-
 const Header = (): JSX.Element => {
-  const [headerTitle, setHeaderTitle] = useState(getRouteTitle());
+  const currPageRoute = useLocation().pathname;
 
+  const currTitle = (title: string) => {
+    let pageTitle;
+
+    switch (title) {
+      case Paths.home.title:
+        pageTitle = Paths.home.title;
+        break;
+      case Paths.about.path:
+        pageTitle = Paths.about.title;
+        break;
+      case Paths.form.title:
+        pageTitle = Paths.form.title;
+        break;
+      default:
+        pageTitle = Paths.home.title;
+    }
+
+    return pageTitle;
+  };
+
+  const [headerTitle, setHeaderTitle] = useState<string>(currTitle(currPageRoute));
   const updateHeaderTitle = (title: string) => () => setHeaderTitle(title);
 
   return (
