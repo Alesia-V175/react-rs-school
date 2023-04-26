@@ -1,5 +1,5 @@
 import { MouseEventHandler } from 'react';
-import { useGetCardQuery } from '../../redux/api/cardsApi';
+import { useGetCardQuery } from '../../redux/configuration/cardsApi';
 import Preloader from '../Preloader';
 import { ICardItem } from '../../types/interfaces';
 import likeIcon from '../../assets/icons/heart.svg';

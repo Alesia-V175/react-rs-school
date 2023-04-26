@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { useGetSearchListCardsQuery } from '../../redux/api/cardsApi';
+import { useGetSearchListCardsQuery } from '../../redux/configuration/cardsApi';
 import { RootState } from '../../redux/store';
 import CardsList from '../../components/CardsList';
 import Search from '../../components/Search/Search';
@@ -11,9 +11,11 @@ import styles from './Home.module.scss';
 
 const Home = (): JSX.Element => {
   let searchStateValue = useSelector<RootState, string>((state) => state.search.stateSearch);
+
   if (!searchStateValue) {
     searchStateValue = InitStateValue.state;
   }
+
   const { data, isLoading } = useGetSearchListCardsQuery(searchStateValue);
 
   return (

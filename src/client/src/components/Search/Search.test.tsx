@@ -3,8 +3,8 @@ import { Provider } from 'react-redux';
 import store from '../../redux/store';
 import Search from './Search';
 
-describe('Component: OrderForm', () => {
-  it('should render form', () => {
+describe('Component: Form', () => {
+  it('should render correct form fields', () => {
     render(
       <Provider store={store}>
         <Search />
