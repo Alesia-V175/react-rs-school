@@ -6,7 +6,7 @@ const cards: IFormCard[] = [
   {
     name: 'Slava',
     email: 'slavaa@gmail.com',
-    date: new Date('2023-05-07'),
+    date: '2023-05-07',
     radio: 'card',
     type: 'Animal',
     checkbox: true,
@@ -15,7 +15,7 @@ const cards: IFormCard[] = [
   {
     name: 'Olga',
     email: 'olga@gmail.com',
-    date: new Date('2023-08-09'),
+    date: '2023-08-09',
     radio: 'cash',
     type: 'Wedding',
     checkbox: true,
@@ -24,7 +24,7 @@ const cards: IFormCard[] = [
   {
     name: 'Alisa',
     email: 'alisa@gmail.com',
-    date: new Date('2023-04-01'),
+    date: '2023-04-01',
     radio: 'card',
     type: 'Wedding',
     checkbox: true,

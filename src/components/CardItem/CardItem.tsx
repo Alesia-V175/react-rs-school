@@ -1,27 +1,23 @@
 import React, { useState } from 'react';
 import { ICardItem } from '../../types/interfaces';
 import likeIcon from '../../assets/icons/heart.svg';
-import Api from '../../Api/Api';
 import FullCardItem from '../FullCardItem';
 import styles from './CardItem.module.scss';
 
 const CardItem = (card: ICardItem): JSX.Element => {
-  const [cardDetailed, setCardDetailed] = useState<ICardItem | undefined>();
+  const [modalCardDetailed, setModalCardDetailed] = useState(false);
 
   const [date] = new Date(card.created_at).toISOString().split('T');
 
-  const handleClick = async () => {
-    if (!cardDetailed) {
-      const response = await Api.getCard(card.id);
-      setCardDetailed(response);
-    }
+  const handleClick = () => {
+    setModalCardDetailed(!modalCardDetailed);
   };
 
   return (
     <div className={styles.card__wrap} onClick={handleClick}>
-      {cardDetailed
+      {modalCardDetailed
         && (
-          <FullCardItem card={cardDetailed} close={() => setCardDetailed(undefined)}/>
+          <FullCardItem cardItem={card} close={handleClick}/>
         )
       }
       <div className={styles.card__photo}>

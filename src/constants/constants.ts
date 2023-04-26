@@ -20,3 +20,7 @@ export const Paths = {
 export const KeyLocalStorage = {
   search: 'search',
 };
+
+export const InitStateValue = {
+  state: 'all',
+};

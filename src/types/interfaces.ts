@@ -72,7 +72,7 @@ export interface ICardsList {
 export interface IFormCard {
   name: string,
   email: string,
-  date: Date,
+  date: string,
   radio: string,
   type: string,
   checkbox: boolean,
@@ -81,10 +81,6 @@ export interface IFormCard {
 
 export interface IFormCards {
   items: IFormCard[],
-}
-
-export interface IFormFields {
-  onSelect: (item: IFormCard) => void;
 }
 
 export interface ISearchParams {

@@ -1,6 +1,8 @@
 import { vitest } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { FieldError } from 'react-hook-form';
+import { Provider } from 'react-redux';
+import store from '../../../redux/store';
 import FormInputFile from './FormInputFile';
 import { InputType } from '../../../types/types';
 
@@ -21,7 +23,9 @@ describe('Component: FormInputFile', () => {
     };
 
     render(
-      <FormInputFile {...prop} />,
+      <Provider store={store}>
+        <FormInputFile {...prop} />
+      </Provider>,
     );
 
     const options = screen.getByText('File test title');
