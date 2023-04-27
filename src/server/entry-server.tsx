@@ -4,13 +4,13 @@ import { Provider } from 'react-redux';
 import store from '../client/src/redux/store';
 import App from '../client/src/App';
 
-export const render = (url: string, options: RenderToPipeableStreamOptions): PipeableStream => {
+export function render(url: string, options?: RenderToPipeableStreamOptions): PipeableStream {
   return renderToPipeableStream(
     <Provider store={store}>
       <StaticRouter location={url}>
         <App />
-      </StaticRouter>,
+      </StaticRouter>
     </Provider>,
     options,
   );
-};
+}
