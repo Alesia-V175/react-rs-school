@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from '../client/src/redux/store';
 import App from '../client/src/App';
 
-export function render(url: string, options?: RenderToPipeableStreamOptions): PipeableStream {
+export const render = (url: string, options?: RenderToPipeableStreamOptions): PipeableStream => {
   return renderToPipeableStream(
     <Provider store={store}>
       <StaticRouter location={url}>
@@ -13,4 +13,4 @@ export function render(url: string, options?: RenderToPipeableStreamOptions): Pi
     </Provider>,
     options,
   );
-}
+};

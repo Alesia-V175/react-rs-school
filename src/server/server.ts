@@ -1,10 +1,7 @@
 import express from 'express';
-import { fileURLToPath } from 'url';
 import fs from 'fs';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
-
-const dirName = path.dirname(fileURLToPath(import.meta.url));
 
 async function createServer() {
   const app = express();
@@ -21,7 +18,7 @@ async function createServer() {
 
     try {
       let template = fs.readFileSync(
-        path.resolve(dirName, 'index.html'),
+        path.resolve('./dist/client/index.html'),
         'utf-8',
       );
 
