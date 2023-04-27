@@ -18,7 +18,7 @@ async function createServer() {
 
     try {
       let template = fs.readFileSync(
-        path.resolve('./dist/client/index.html'),
+        path.resolve('./index.html'),
         'utf-8',
       );
 
@@ -27,13 +27,13 @@ async function createServer() {
 
       const { render } = await vite.ssrLoadModule('/src/server/entry-server.tsx');
 
+      result.write(html[0]);
       const { pipe } = await render(url, {
         onShellReady() {
-          result.write(html[0]);
           pipe(result);
         },
         onAllReady() {
-          result.write(html[0] + html[1]);
+          result.write(html[1]);
           result.end();
         },
       });
