@@ -2,6 +2,7 @@ import { defineConfig } from 'cypress';
 import coverage from '@cypress/code-coverage/task';
 
 export default defineConfig({
+  projectId: 'pjx9w6',
   env: {
     codeCoverage: {
       exclude: "cypress/**/*.*",

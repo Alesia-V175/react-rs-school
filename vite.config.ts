@@ -16,14 +16,14 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['./src/setupTests.ts'],
+    setupFiles: ['./src/client/setupTests.ts'],
     coverage: {
       enabled: true,
       provider: 'c8',
       reporter: ['text'],
       all: true,
-      include: ['src/**/*.tsx'],
-      exclude: ['src/types', 'src/**/*.test.tsx'],
+      include: ['src/client/src/**/*.tsx'],
+      exclude: ['src/client/src/types', 'src/client/src/**/*.test.tsx'],
     },
   },
 });

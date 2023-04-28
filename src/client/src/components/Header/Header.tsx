@@ -24,6 +24,9 @@ const Header = (): JSX.Element => {
       case Paths.form.title:
         pageTitle = Paths.form.title;
         break;
+      case Paths.error.title:
+        pageTitle = Paths.error.title;
+        break;
       default:
         pageTitle = Paths.home.title;
     }

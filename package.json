@@ -18,7 +18,8 @@
     "cy:open": "cypress open",
     "cy:open-e2e": "cypress open --e2e --browser chrome",
     "cy:run-e2e": "cypress run --e2e",
-    "cy:report": "npx cypress run --e2e && npx nyc report && npx nyc report --reporter=text-summary"
+    "cy:report": "npx cypress run --e2e && npx nyc report && npx nyc report --reporter=text-summary",
+    "cy:report-summary": "npx nyc report --reporter=text-summary"
   },
   "author": "Alesia-V175",
   "license": "ISC",
