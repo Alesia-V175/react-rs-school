@@ -17,6 +17,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "types": ["cypress", "cypress-file-upload"],
     "plugins": [{
       "cssModules": "typescript-plugin-css-modules"
     }]
