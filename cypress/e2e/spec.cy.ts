@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 import '@cypress/code-coverage/support';
+import 'cypress-file-upload';
 
 before(() => {
   cy.visit('/');
@@ -32,10 +33,6 @@ describe('Navigation', () => {
     cy.get('._container__button_ee67t_43').click();
     cy.contains('Explore the world with a photo!');
   })
-
-  it('should remove page load on coverage saving', () => {
-    expect(true).to.equal(true);
-  });
 });
 
 describe('Home page', () => {
@@ -51,10 +48,6 @@ describe('Home page', () => {
   it('should have cards section', () => {
     cy.get('._card__wrap_2o4vp_29').should('have.length', '30');
   })
-
-  it('should remove page load on coverage saving', () => {
-    expect(true).to.equal(true);
-  });
 });
 
 describe('Search bar', () => {
@@ -69,6 +62,7 @@ describe('Search bar', () => {
     cy.get('._search__input_1d74q_34 ').clear();
   });
 });
+
 describe('Photo card', () => {
   it('should have correct value', () => {
     cy.get('._search__input_1d74q_34 ')
@@ -85,3 +79,23 @@ describe('Photo card', () => {
       .click();
   });
 });
+
+describe('Form Card', () => {
+  it('checks Create component', () => {
+    cy.visit('/form');
+    cy.get('input[name="name"]').type('Ivan');
+    cy.get('input[name="email"]').type('Ivan@gmail.com');
+    cy.get('input[name="date"]').type('2023-09-01');
+    cy.get('input[name="radio"]').last().check();
+    cy.get('select').select('Fashion');
+    cy.get('input[name="checkbox"]').click();
+    cy.get('input[name="file"]').selectFile('src/client/src/assets/images/about-banner.jpg');
+    cy.get('[type="submit"]').click();
+
+    cy.get('._card_13wvb_29').contains('Ivan');
+  });
+
+  it('should remove page load on coverage saving', () => {
+    expect(true).to.equal(true);
+  });
+})

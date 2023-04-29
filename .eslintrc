@@ -55,7 +55,9 @@
       "error",
       {"devDependencies": true}
     ],
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "no-console": "off",
+    "import/prefer-default-export": "off"
   },
   "settings": {
     "react": {
