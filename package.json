@@ -16,10 +16,10 @@
     "build:server": "vite build --outDir dist/server --ssr src/server/entry-server.tsx",
     "build": "npm run build:client && npm run build:server",
     "cy:open": "cypress open",
-    "cy:open-e2e": "cypress open --e2e --browser chrome",
-    "cy:run-e2e": "cypress run --e2e",
-    "cy:report": "npx cypress run --e2e && npx nyc report && npx nyc report --reporter=text-summary",
-    "cy:report-summary": "npx nyc report --reporter=text-summary"
+    "cy:open-e2e": "rm -rf coverage && cypress open --e2e --browser chrome",
+    "cy:run-e2e": "rm -rf coverage && cypress run --e2e",
+    "cy:report": "rm -rf coverage && npx cypress run --e2e && npx nyc report && npx nyc report --reporter=text-summary",
+    "cy:report-summary": "rm -rf coverage && npx nyc report --reporter=text-summary"
   },
   "author": "Alesia-V175",
   "license": "ISC",

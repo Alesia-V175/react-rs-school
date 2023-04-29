@@ -81,7 +81,7 @@ describe('Photo card', () => {
 });
 
 describe('Form Card', () => {
-  it('checks Create component', () => {
+  it('should create new card with right value ', () => {
     cy.visit('/form');
     cy.get('input[name="name"]').type('Ivan');
     cy.get('input[name="email"]').type('Ivan@gmail.com');
