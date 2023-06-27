@@ -1,49 +1,33 @@
-# MAPMoney. The best app for manage your finance
+## Information
+Project for the Rolling Scopes School React course.
 
-## Команда
+## Deploy (without SSR)
+https://alesia-v157-react-rsschool.netlify.app/
 
-- [Павел](https://github.com/BondPV) - Backend, Frontend
-- [Марина](https://github.com/marinastepanchuk) - Frontend
-- [Алеся](https://github.com/Alesia-V175) - Frontend
+## Instructions
+You need to clone this repo and checkout the branch 'ssr/ssg' branch or 'develop' branch.
 
-## Deploy:
-Frontend: https://mapmoney.netlify.app  
-Backend: https://mapmoney.onrender.com  
-Репозиторий backend: https://github.com/BondPV/rsclone-server/tree/develop  
+npm install (install required packages)
+npm run build (prepare application build)
+npm run dev (start project in developer mode)
+npm run lint (check code style)
+npm test (run unit tests)
 
-Для проверки функционала требуется регистрация/авторизация.
+## Cypress:
 
-- Тестовый аккаунт с данными: `rsclone01@mail.ru / rsclone01`
-- [Телеграм-чат для получения сообщений с сайта](https://t.me/rsmapmoney)
+npm run cy:open-e2e
+npm run cy:run-e2e
+npm run cy:report
 
-## Functions
-
-- SPA, роутинг;
-- Смена светлой/темной темы;
-- Смена языка RU/EN/DE;
-- Регистрация, аутентификация, авторизация;
-- Добавление и удаление расходов и доходов;
-- Добавление, удаление и изменение счетов;
-- Добавление, удаление и изменение категорий расходов;
-- Изменение иконок категорий и счетов;
-- Изменение регистрационных данных;
-- Аналитические диаграммы, перерисовка графиков в зависимости от выбранного пользователем периода;
-- Таблицы отражения всех расходов и всех доходов;
-- Отправка сообщений в службу поддержки через telegram;
-- Весь HTML-контент генерируется с помощью JavaScript;
-- Адаптивная верстка;
-
-## Stack
-
-- Frontend: HTML5, SCSS, TypeScript
-- Backend: Node.js / Express
-- Database: Mongo DB
-
-## Instructions:
-
-You need to clone this repo and checkout the necessary branch or 'develop' branch.
-1. npm install (install required packages)
-2. npm run dev (start project in developer mode)
-3. npm run lint (check code style)
-4. npm run build (prepare application build)
-5. npm test (run tests)
+## Tech Stack
+TypeScript | JavaScript With Syntax For Types.
+React | The library for user interfaces
+Vite | Next Generation Frontend Tooling
+Vitest | Unit test framework
+React Hook Form | Simple React forms validation
+Redux Toolkit | Tool set for efficient Redux development
+Redux Toolkit | RTK Query
+Server-Side Rendering: vite ssr, react-router ssr, redux ssr
+Cypress | Fast, easy and reliable testing
+ESLint | Code analyzer
+Sass/SCSS | Syntactically Awesome Style Sheets
